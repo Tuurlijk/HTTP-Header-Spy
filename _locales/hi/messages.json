@@ -1,0 +1,365 @@
+{
+  "extensionDescription": {
+    "description": "The description of the extension",
+    "message": "HTTP जासूस आप सही कोई अतिरिक्त क्लिक के साथ पेज लोड करने के बाद अनुरोध प्रतिक्रिया हेडर और कुकीज़ का निरीक्षण करने के लिए सक्षम बनाता है।"
+  },
+  "extensionName": {
+    "description": "The name of the extension",
+    "message": "HTTP स्पाई"
+  },
+  "extensionNameShort": {
+    "description": "The short name of the extension",
+    "message": "HTTP शीर्ष"
+  },
+  // Option menu names
+  "optionsDisplayName": {
+    "description": "Menu title for options page",
+    "message": "विकल्प"
+  },
+  "aboutDisplayName": {
+    "description": "Menu title for about page",
+    "message": "के बारे में"
+  },
+  "plansDisplayName": {
+    "description": "Menu title for 'Enable extra options' page",
+    "message": "अतिरिक्त विकल्प सक्षम करें"
+  },
+  // Options page
+  "buttonAdd": {
+    "description": "Add button text",
+    "message": "जोड़ना"
+  },
+  "buttonOptions": {
+    "description": "Options page button text",
+    "message": "विकल्प पृष्ठ"
+  },
+  // Options page : Display options
+  "optionsPageDisplayOptions": {
+    "description": "Display options",
+    "message": "प्रदर्शित विकल्प"
+  },
+  "optionsPageDisplayOptionsPressEscapeToHidePanels": {
+    "description": "Press the ESC key to hide panels.",
+    "message": "पैनलों को छिपाने के लिए ईएससी कुंजी दबाएँ।"
+  },
+  "optionsPageDisplayOptionsAutoHide": {
+    "description": "Press the ESC key to hide panels.",
+    "message": "जब ऑटो छिपाने सक्षम है, फिल्टर बार नहीं दिखाया जाएगा।"
+  },
+  "optionsPageDisplayOptionsShowIn": {
+    "description": "___Show in___ [mode]",
+    "message": "में दिखाएं"
+  },
+  "renderModeNormal": {
+    "description": "Show in [___normal___]",
+    "message": "साधारण"
+  },
+  "renderModeMicro": {
+    "description": "Show in [___micro___]",
+    "message": "सूक्ष्म"
+  },
+  "renderModeDisabled": {
+    "description": "Show in [___disabled___]",
+    "message": "विकलांग"
+  },
+  "optionsPageDisplayOptionsModeInThe": {
+    "description": "Show in [mode] ___mode, in the___",
+    "message": "मोड, में"
+  },
+  "locationTopLeftCorner": {
+    "description": "mode, in the [___top left corner___]",
+    "message": "ऊपरी बायां कोना"
+  },
+  "locationTopRightCorner": {
+    "description": "mode, in the [___top right corner___]",
+    "message": "ऊपरी दायां किनारा"
+  },
+  "locationBottomLeftCorner": {
+    "description": "mode, in the [___bottom left corner___]",
+    "message": "निचला बायां किनारा"
+  },
+  "locationBottomRightCorner": {
+    "description": "mode, in the [___bottom right corner___]",
+    "message": "नीचे का दांया कोना"
+  },
+  "optionsPageDisplayOptionsModeUsingA": {
+    "description": "mode, in the [bottom right corner] ___using a___",
+    "message": "इसका उपयोग करना"
+  },
+  "themeDark": {
+    "description": "using a [___dark theme___]",
+    "message": "अंधेरे विषय"
+  },
+  "themeLight": {
+    "description": "using a [___light theme___]",
+    "message": "प्रकाश विषय"
+  },
+  "optionsPageDisplayOptionsAndShowThe": {
+    "description": "using a [light theme] ___and show the___ [x] most recent requests",
+    "message": "और दिखाने के लिए"
+  },
+  "optionsPageDisplayOptionsMostRecentRequests": {
+    "description": "using a [light theme] and show the [x] ___most recent requests___",
+    "message": "सबसे हाल ही में अनुरोधों"
+  },
+  "doAutoHidePanels": {
+    "description": "[___Do auto-hide panels___] after [x] seconds",
+    "message": "ऑटो छिपाने के पैनल"
+  },
+  "doNotAutoHidePanels": {
+    "description": "[___Do not auto-hide panels___] after [x] seconds",
+    "message": "पैनलों ऑटो छिपा नहीं है"
+  },
+  "optionsPageDisplayOptionsAutoHideAfter": {
+    "description": "[Do auto-hide panels] ___ after___ [x] seconds",
+    "message": "बाद"
+  },
+  "optionsPageDisplayOptionsAutoHideSeconds": {
+    "description": "[Do auto-hide panels] after [x] ___seconds___",
+    "message": "सेकंड"
+  },
+  // Options page : Hide request headers
+  "optionsPageHideRequestHeaders": {
+    "description": "Hide request headers",
+    "message": "मिटायें अनुरोध हेडर"
+  },
+  "optionsPageHideRequestHeadersDescription": {
+    "description": "Request headers (or patterns thereof) that will not be displayed.",
+    "message": "अनुरोध हेडर (या पैटर्न क्या है) कि प्रदर्शित नहीं किया जाएगा।"
+  },
+  // Options page : Hide response headers
+  "optionsPageHideResponseHeaders": {
+    "description": "Hide response headers",
+    "message": "प्रतिक्रिया हेडर छुपाएं"
+  },
+  "optionsPageHideResponseHeadersDescription": {
+    "description": "Response headers (or patterns thereof) that will not be displayed.",
+    "message": "प्रतिक्रिया हेडर (या पैटर्न क्या है) कि प्रदर्शित नहीं किया जाएगा।"
+  },
+  // Options page : Headers to show in Micro mode
+  "optionsPageMicroModeHeaders": {
+    "description": "Headers to show in Micro mode",
+    "message": "हेडर माइक्रो मोड में दिखाने के लिए"
+  },
+  "optionsPageMicroModeHeadersDescription": {
+    "description": "Response headers (or patterns thereof) that will be shown in micro mode.",
+    "message": "प्रतिक्रिया हेडर (या पैटर्न क्या है) कि माइक्रो मोड में दिखाया जाएगा।"
+  },
+  // Options page : Strings to highlight
+  "optionsPageStringsToHightlight": {
+    "description": "Strings to highlight",
+    "message": "स्ट्रिंग्स को उजागर करने के लिए"
+  },
+  "optionsPageStringsToHightlightDescription": {
+    "description": "Headers (or patterns thereof) that will be",
+    "message": "हेडर (या उसके पैटर्न) कि हो जाएगा"
+  },
+  "optionsPageStringsToHightlightDescriptionHighlighted": {
+    "description": "Headers (or patterns thereof) that will be ___highlighted___",
+    "message": "प्रकाश डाला"
+  },
+  // Plans page
+  "plansPageTitle": {
+    "description": "Enable extra options",
+    "message": "अतिरिक्त विकल्प सक्षम करें"
+  },
+  "plansPageYouCan": {
+    "description": "___You can___ test all these great features every first 15 minutes of every hour:",
+    "message": "आप ऐसा कर सकते हैं"
+  },
+  "plansPageTest": {
+    "description": "You can ___test___ all these great features every first 15 minutes of every hour:",
+    "message": "परीक्षण"
+  },
+  "plansPageTheseFeatures": {
+    "description": "You can test ___all these great features___ every first 15 minutes of every hour:",
+    "message": "इन सभी अतिरिक्त सुविधाओं"
+  },
+  "plansPageEveryFirst": {
+    "description": "You can test all these great features ___every first 15 minutes___ of every hour:",
+    "message": "हर 15 मिनट पहले"
+  },
+  "plansPageOfEveryHour": {
+    "description": "You can test all these great features every first 15 minutes ___of every hour___:",
+    "message": "हर घंटे के"
+  },
+  "plansPageOptionServerIp": {
+    "description": "Server IP address",
+    "message": "सर्वर आईपी पता"
+  },
+  "plansPageOptionSubFrameRequests": {
+    "description": "Sub-frame requests",
+    "message": "उप फ्रेम अनुरोधों"
+  },
+  "plansPageOptionXhrRequests": {
+    "description": "XML HTTP Requests (XHR / AJAX)",
+    "message": "एक्सएमएल HTTP अनुरोध (एक्सएचआर / AJAX)"
+  },
+  "plansPageOptionRequestTimes": {
+    "description": "Request times: time to headers received, time to first byte and time to complete",
+    "message": "अनुरोध बार में: हेडर के लिए समय पहली बाइट और पूरा करने के लिए समय के लिए प्राप्त किया, समय"
+  },
+  "plansPageOptionFilterBar": {
+    "description": "Use the filter bar to filter the headers",
+    "message": "हेडर फिल्टर करने के लिए फिल्टर पट्टी का उपयोग करें"
+  },
+  "plansPageOneTimeBeerSupport": {
+    "description": "One-time beer support",
+    "message": "एक बार बीयर समर्थन"
+  },
+  "plansPageOneTimePizzaSupport": {
+    "description": "One-time pizza support",
+    "message": "एक बार पिज्जा समर्थन"
+  },
+  "plansPageSubscriptions": {
+    "description": "Subscriptions",
+    "message": "सदस्यताएँ"
+  },
+  "plansPageMangeSubscriptions": {
+    "description": "Manage subscriptions",
+    "message": "सदस्यता प्रबंधित करें"
+  },
+  "plansPageEnableFeatures": {
+    "description": "___If you want to enable these features___ permanently, please support further development by donating me some beer/pizza:",
+    "message": "यदि आप इन सुविधाओं सक्षम करना चाहते हैं"
+  },
+  "plansPageEnableFeaturesPermanently": {
+    "description": "If you want to enable these features ___permanently___, please support further development by donating me some beer/pizza:",
+    "message": "स्थायी रूप से"
+  },
+  "plansPageEnableFeaturesPleaseSupport": {
+    "description": "If you want to enable these features permanently___, please support further development by donating me some beer/pizza___:",
+    "message": ", मुझे कुछ बियर / पिज्जा दान करके आगे विकास का समर्थन करें"
+  },
+  "plansPageIWillSupportYouWith": {
+    "description": "___I'll support you with___ [x] pizzas",
+    "message": "मैं के साथ आप का समर्थन करेंगे"
+  },
+  "plansPageBeers": {
+    "description": "I'll support you with [x] ___beers___",
+    "message": "बियर"
+  },
+  "plansPagePizzas": {
+    "description": "I'll support you with [x] ___pizzas___",
+    "message": "पिज्जा"
+  },
+  "plansPageThankYou": {
+    "description": "Thank you for your support ;-)",
+    "message": "आपके सहयोग के लिए धन्यवाद ;-)"
+  },
+  // Buy flow
+  "buyStatusRetrievingProducts": {
+    "description": "Retreiving available products",
+    "message": "उपलब्ध उत्पादों को पुन: प्राप्त"
+  },
+  "buyErrorRetrievingProducts": {
+    "description": "Error retrieving product list",
+    "message": "उत्पाद की सूची को पुन: प्राप्त त्रुटि"
+  },
+  "buyStatusRetrievingPurchasedProducts": {
+    "description": "Retreiving list of purchased products",
+    "message": "खरीदे गए उत्पादों का पुन: प्राप्त सूची"
+  },
+  "buyErrorRetrievingPurchasedProducts": {
+    "description": "Error retreiving list of purchased products",
+    "message": "खरीदे गए उत्पादों की सूची को पुन: प्राप्त त्रुटि"
+  },
+  "buyStatusPurchaseComplete": {
+    "description": "Purchase completed. Order ID",
+    "message": "क्रय पूरा किया। आदेश आईडी"
+  },
+  "buyErrorPurchaseFailed": {
+    "description": "Purchase failed",
+    "message": "खरीद विफल रही"
+  },
+  // About page
+  "aboutPageContent": {
+    "description": "Section of text describing Me",
+    "message": "ेरा नाम Michiel Roos है। मैं इस ऐड-ऑन के विकास का एक बहुत मज़ा किया था। मैं भी बहुत कुछ सीखा। मैं आपको यह उपयोगी है और इसे उपयोग का आनंद मिल उम्मीद है। आप किसी भी suggetstions या रचनात्मक आलोचना है, तो कृपया मुझसे संपर्क करें।"
+  },
+  "popupDefaultMessage": {
+    "description": "The default message shown in the browserAction popup",
+    "message": "कोई हेडर अभी तक कब्जा कर लिया गया। हेडर को देखने के लिए इस टैब को फिर से लोड करें।"
+  },
+  // Popup and content messages
+  "contentMessagesEnableExtraOptions": {
+    "description": "enable XHR and sub-frame requests",
+    "message": "एक्सएचआर और उप फ्रेम अनुरोधों सक्षम"
+  },
+  "contentMessagesPressEscToClosePanels": {
+    "description": "[esc] closes these panels. Click to toggle panels.",
+    "message": "[ईएससी] इन पैनलों बंद कर देता है। पैनलों को चालू करने के लिए क्लिक करें।"
+  },
+  "contentMessagesCache": {
+    "description": "cache",
+    "message": "कैश"
+  },
+  "contentMessagesCached": {
+    "description": "cached",
+    "message": "कैश्ड"
+  },
+  "contentMessagesFromDiskCache": {
+    "description": "from disk cache",
+    "message": "डिस्क कैश से"
+  },
+  "contentMessagesHeadersReceived": {
+    "description": "shorthand for headers received: ___headers recv___",
+    "message": "हेडर recv"
+  },
+  "contentMessagesTimeToFirstByte": {
+    "description": "shorthand for time to first byte: ___first byte___",
+    "message": "पहली बाइट"
+  },
+  "contentMessagesRequestComplete": {
+    "description": "shorthand for request completed: ___complete___",
+    "message": "पूर्ण"
+  },
+  "contentMessagesPanelTitleRequest": {
+    "description": "Request",
+    "message": "निवेदन"
+  },
+  "contentMessagesPanelTitleResponse": {
+    "description": "Response",
+    "message": "प्रतिक्रिया"
+  },
+  "contentMessagesPanelTitleCookies": {
+    "description": "Cookies",
+    "message": "कुकीज़"
+  },
+  "contentMessagesPanelTitleFormData": {
+    "description": "Form Data",
+    "message": "प्रपत्र डेटा"
+  },
+  "contentMessagesPanelTitleQuery": {
+    "description": "Query",
+    "message": "सवाल"
+  },
+  "contentMessagesFilterBarFilter": {
+    "description": "Filter",
+    "message": "फ़िल्टर"
+  },
+  "contentMessagesFilterBarRegex": {
+    "description": "Regex",
+    "message": "regex"
+  },
+  "contentMessagesRequestTypeDoc": {
+    "description": "Doc",
+    "message": "डॉक्टर"
+  },
+  "contentMessagesRequestTypeFrame": {
+    "description": "Frame",
+    "message": "ढांचा"
+  },
+  "contentMessagesRequestTypeXhr": {
+    "description": "XHR",
+    "message": "एक्सएचआर"
+  },
+  "contentMessagesProEnableServerIp": {
+    "description": "enable server IP",
+    "message": "सर्वर आईपी सक्षम"
+  },
+  "contentMessagesProEnableResponseTimes": {
+    "description": "enable response times",
+    "message": "प्रतिक्रिया समय के लिए सक्षम"
+  }
+}

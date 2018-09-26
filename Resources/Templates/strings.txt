@@ -1,0 +1,88 @@
+HTTP Header Spy enables you to inspect request- response headers and cookies right after page load with no extra clicks.
+HTTP Header Spy
+HTTP Headers
+Options
+About
+Enable extra options
+Add
+Options page
+Display options
+Press the ESC key to hide panels.
+When auto-hide is enabled, the filter bar will not be shown.
+Show in
+normal
+micro
+disabled
+mode, in the
+top left corner
+top right corner
+bottom left corner
+bottom right corner
+using a
+dark theme
+light theme
+and show the
+most recent requests
+Do auto-hide panels
+Do not auto-hide panels
+after
+seconds
+Hide request headers
+Request headers (or patterns thereof) that will not be displayed.
+Hide response headers
+Response headers (or patterns thereof) that will not be displayed.
+Headers to show in Micro mode
+Response headers (or patterns thereof) that will be shown in micro mode.
+Strings to highlight
+Headers (or patterns thereof) that will be
+highlighted
+Enable extra options
+You can
+test
+all these extra features
+every first 15 minutes
+of every hour
+Server IP address
+Sub-frame requests
+XML HTTP Requests (XHR / AJAX)
+Request times: time to headers received, time to first byte and time to complete
+Use the filter bar to filter the headers
+One-time beer support
+One-time pizza support
+Subscriptions
+Manage subscriptions
+If you want to enable these features
+permanently
+, please support further development by donating me some beer/pizza
+I'll support you with
+beers
+pizzas
+Thank you for your support ;-)
+Retrieving available products
+Error retrieving product list
+Retrieving list of purchased products
+Error retrieving list of purchased products
+Purchase completed. Order ID
+Purchase failed
+My name is Michiel Roos. I had a lot of fun developing this add-on. I also learnt a lot. I hope you find it usefull and enjoy using it. If you have any suggetstions or constructive criticism, please contact me.
+No headers were captured yet. Please reload this tab to see the headers.
+enable XHR and sub-frame requests
+[esc] closes these panels. Click to toggle panels.
+cache
+cached
+from disk cache
+headers recv
+first byte
+complete
+Request
+Response
+Cookies
+Form Data
+Query
+Filter
+Regex
+Doc
+Frame
+XHR
+enable server IP
+enable response times

@@ -1,0 +1,67 @@
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ div,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ label,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ span,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ p,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .normalMode,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .microMode,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .value,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .location,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .sectionTitle,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .button:hover,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .closeButton:hover,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .toolBar .requestTypes .type:hover,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .toolBar .requestTypes .type.active,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ tr:hover .key {
+	transition: color 75ms;
+	color: rgb(50, 50, 50);
+	border-color: rgb(50, 50, 50);
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .button,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .closeButton,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .key,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .location:hover,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .sectionTitle:hover,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .downPointingTriangle:before,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .rightPointingTriangle:before,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .toolBar .requestTypes .type,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .toolBar .requestTypes .type.active:hover,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ tr:hover .value {
+	transition: color 75ms;
+	color: rgb(130, 130, 130);
+	border-color: rgb(130, 130, 130);
+	cursor: pointer;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .cookieTable:not(:first-child) {
+	border-top: 1px dotted #b3b3b3;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .separator {
+	border-top: 1px solid #b3b3b3;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .normalMode {
+	background: rgba(221, 221, 221, 0.95);
+	border: 1px solid #b3b3b3;
+	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.26);
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .microMode {
+	background: rgba(221, 221, 221, 0.95);
+	border: 1px solid #b3b3b3;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .toolBar .requestTypes .type,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ #inlineFilterInput {
+	border-color: #b3b3b3;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ #toolBar {
+	background: rgba(221, 221, 221, 0.95);
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .toolBar .requestTypes .type.active {
+	background: rgba(130, 130, 130, 0.3);
+}

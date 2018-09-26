@@ -1,0 +1,365 @@
+{
+  "extensionDescription": {
+    "description": "The description of the extension",
+    "message": ""
+  },
+  "extensionName": {
+    "description": "The name of the extension",
+    "message": ""
+  },
+  "extensionNameShort": {
+    "description": "The short name of the extension",
+    "message": ""
+  },
+  // Option menu names
+  "optionsDisplayName": {
+    "description": "Menu title for options page",
+    "message": ""
+  },
+  "aboutDisplayName": {
+    "description": "Menu title for about page",
+    "message": ""
+  },
+  "plansDisplayName": {
+    "description": "Menu title for 'Enable extra options' page",
+    "message": ""
+  },
+  // Options page
+  "buttonAdd": {
+    "description": "Add button text",
+    "message": ""
+  },
+  "buttonOptions": {
+    "description": "Options page button text",
+    "message": ""
+  },
+  // Options page : Display options
+  "optionsPageDisplayOptions": {
+    "description": "Display options",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsPressEscapeToHidePanels": {
+    "description": "Press the ESC key to hide panels.",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsAutoHide": {
+    "description": "Press the ESC key to hide panels.",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsShowIn": {
+    "description": "___Show in___ [mode]",
+    "message": ""
+  },
+  "renderModeNormal": {
+    "description": "Show in [___normal___]",
+    "message": ""
+  },
+  "renderModeMicro": {
+    "description": "Show in [___micro___]",
+    "message": ""
+  },
+  "renderModeDisabled": {
+    "description": "Show in [___disabled___]",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsModeInThe": {
+    "description": "Show in [mode] ___mode, in the___",
+    "message": ""
+  },
+  "locationTopLeftCorner": {
+    "description": "mode, in the [___top left corner___]",
+    "message": ""
+  },
+  "locationTopRightCorner": {
+    "description": "mode, in the [___top right corner___]",
+    "message": ""
+  },
+  "locationBottomLeftCorner": {
+    "description": "mode, in the [___bottom left corner___]",
+    "message": ""
+  },
+  "locationBottomRightCorner": {
+    "description": "mode, in the [___bottom right corner___]",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsModeUsingA": {
+    "description": "mode, in the [bottom right corner] ___using a___",
+    "message": ""
+  },
+  "themeDark": {
+    "description": "using a [___dark theme___]",
+    "message": ""
+  },
+  "themeLight": {
+    "description": "using a [___light theme___]",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsAndShowThe": {
+    "description": "using a [light theme] ___and show the___ [x] most recent requests",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsMostRecentRequests": {
+    "description": "using a [light theme] and show the [x] ___most recent requests___",
+    "message": ""
+  },
+  "doAutoHidePanels": {
+    "description": "[___Do auto-hide panels___] after [x] seconds",
+    "message": ""
+  },
+  "doNotAutoHidePanels": {
+    "description": "[___Do not auto-hide panels___] after [x] seconds",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsAutoHideAfter": {
+    "description": "[Do auto-hide panels] ___ after___ [x] seconds",
+    "message": ""
+  },
+  "optionsPageDisplayOptionsAutoHideSeconds": {
+    "description": "[Do auto-hide panels] after [x] ___seconds___",
+    "message": ""
+  },
+  // Options page : Hide request headers
+  "optionsPageHideRequestHeaders": {
+    "description": "Hide request headers",
+    "message": ""
+  },
+  "optionsPageHideRequestHeadersDescription": {
+    "description": "Request headers (or patterns thereof) that will not be displayed.",
+    "message": ""
+  },
+  // Options page : Hide response headers
+  "optionsPageHideResponseHeaders": {
+    "description": "Hide response headers",
+    "message": ""
+  },
+  "optionsPageHideResponseHeadersDescription": {
+    "description": "Response headers (or patterns thereof) that will not be displayed.",
+    "message": ""
+  },
+  // Options page : Headers to show in Micro mode
+  "optionsPageMicroModeHeaders": {
+    "description": "Headers to show in Micro mode",
+    "message": ""
+  },
+  "optionsPageMicroModeHeadersDescription": {
+    "description": "Response headers (or patterns thereof) that will be shown in micro mode.",
+    "message": ""
+  },
+  // Options page : Strings to highlight
+  "optionsPageStringsToHightlight": {
+    "description": "Strings to highlight",
+    "message": ""
+  },
+  "optionsPageStringsToHightlightDescription": {
+    "description": "Headers (or patterns thereof) that will be",
+    "message": ""
+  },
+  "optionsPageStringsToHightlightDescriptionHighlighted": {
+    "description": "Headers (or patterns thereof) that will be ___highlighted___",
+    "message": ""
+  },
+  // Plans page
+  "plansPageTitle": {
+    "description": "Enable extra options",
+    "message": ""
+  },
+  "plansPageYouCan": {
+    "description": "___You can___ test all these great features every first 15 minutes of every hour:",
+    "message": ""
+  },
+  "plansPageTest": {
+    "description": "You can ___test___ all these great features every first 15 minutes of every hour:",
+    "message": ""
+  },
+  "plansPageTheseFeatures": {
+    "description": "You can test ___all these great features___ every first 15 minutes of every hour:",
+    "message": ""
+  },
+  "plansPageEveryFirst": {
+    "description": "You can test all these great features ___every first 15 minutes___ of every hour:",
+    "message": ""
+  },
+  "plansPageOfEveryHour": {
+    "description": "You can test all these great features every first 15 minutes ___of every hour___:",
+    "message": ""
+  },
+  "plansPageOptionServerIp": {
+    "description": "Server IP address",
+    "message": ""
+  },
+  "plansPageOptionSubFrameRequests": {
+    "description": "Sub-frame requests",
+    "message": ""
+  },
+  "plansPageOptionXhrRequests": {
+    "description": "XML HTTP Requests (XHR / AJAX)",
+    "message": ""
+  },
+  "plansPageOptionRequestTimes": {
+    "description": "Request times: time to headers received, time to first byte and time to complete",
+    "message": ""
+  },
+  "plansPageOptionFilterBar": {
+    "description": "Use the filter bar to filter the headers",
+    "message": ""
+  },
+  "plansPageOneTimeBeerSupport": {
+    "description": "One-time beer support",
+    "message": ""
+  },
+  "plansPageOneTimePizzaSupport": {
+    "description": "One-time pizza support",
+    "message": ""
+  },
+  "plansPageSubscriptions": {
+    "description": "Subscriptions",
+    "message": ""
+  },
+  "plansPageMangeSubscriptions": {
+    "description": "Manage subscriptions",
+    "message": ""
+  },
+  "plansPageEnableFeatures": {
+    "description": "___If you want to enable these features___ permanently, please support further development by donating me some beer/pizza:",
+    "message": ""
+  },
+  "plansPageEnableFeaturesPermanently": {
+    "description": "If you want to enable these features ___permanently___, please support further development by donating me some beer/pizza:",
+    "message": ""
+  },
+  "plansPageEnableFeaturesPleaseSupport": {
+    "description": "If you want to enable these features permanently___, please support further development by donating me some beer/pizza___:",
+    "message": ""
+  },
+  "plansPageIWillSupportYouWith": {
+    "description": "___I'll support you with___ [x] pizzas",
+    "message": ""
+  },
+  "plansPageBeers": {
+    "description": "I'll support you with [x] ___beers___",
+    "message": ""
+  },
+  "plansPagePizzas": {
+    "description": "I'll support you with [x] ___pizzas___",
+    "message": ""
+  },
+  "plansPageThankYou": {
+    "description": "Thank you for your support ;-)",
+    "message": ""
+  },
+  // Buy flow
+  "buyStatusRetrievingProducts": {
+    "description": "Retreiving available products",
+    "message": ""
+  },
+  "buyErrorRetrievingProducts": {
+    "description": "Error retrieving product list",
+    "message": ""
+  },
+  "buyStatusRetrievingPurchasedProducts": {
+    "description": "Retreiving list of purchased products",
+    "message": ""
+  },
+  "buyErrorRetrievingPurchasedProducts": {
+    "description": "Error retreiving list of purchased products",
+    "message": ""
+  },
+  "buyStatusPurchaseComplete": {
+    "description": "Purchase completed. Order ID",
+    "message": ""
+  },
+  "buyErrorPurchaseFailed": {
+    "description": "Purchase failed",
+    "message": ""
+  },
+  // About page
+  "aboutPageContent": {
+    "description": "Section of text describing Me",
+    "message": ""
+  },
+  "popupDefaultMessage": {
+    "description": "The default message shown in the browserAction popup",
+    "message": ""
+  },
+  // Popup and content messages
+  "contentMessagesEnableExtraOptions": {
+    "description": "enable XHR and sub-frame requests",
+    "message": ""
+  },
+  "contentMessagesPressEscToClosePanels": {
+    "description": "[esc] closes these panels. Click to toggle panels.",
+    "message": ""
+  },
+  "contentMessagesCache": {
+    "description": "cache",
+    "message": ""
+  },
+  "contentMessagesCached": {
+    "description": "cached",
+    "message": ""
+  },
+  "contentMessagesFromDiskCache": {
+    "description": "from disk cache",
+    "message": ""
+  },
+  "contentMessagesHeadersReceived": {
+    "description": "shorthand for headers received: ___headers recv___",
+    "message": ""
+  },
+  "contentMessagesTimeToFirstByte": {
+    "description": "shorthand for time to first byte: ___first byte___",
+    "message": ""
+  },
+  "contentMessagesRequestComplete": {
+    "description": "shorthand for request completed: ___complete___",
+    "message": ""
+  },
+  "contentMessagesPanelTitleRequest": {
+    "description": "Request",
+    "message": ""
+  },
+  "contentMessagesPanelTitleResponse": {
+    "description": "Response",
+    "message": ""
+  },
+  "contentMessagesPanelTitleCookies": {
+    "description": "Cookies",
+    "message": ""
+  },
+  "contentMessagesPanelTitleFormData": {
+    "description": "Form Data",
+    "message": ""
+  },
+  "contentMessagesPanelTitleQuery": {
+    "description": "Query",
+    "message": ""
+  },
+  "contentMessagesFilterBarFilter": {
+    "description": "Filter",
+    "message": ""
+  },
+  "contentMessagesFilterBarRegex": {
+    "description": "Regex",
+    "message": ""
+  },
+  "contentMessagesRequestTypeDoc": {
+    "description": "Doc",
+    "message": ""
+  },
+  "contentMessagesRequestTypeFrame": {
+    "description": "Frame",
+    "message": ""
+  },
+  "contentMessagesRequestTypeXhr": {
+    "description": "XHR",
+    "message": ""
+  },
+  "contentMessagesProEnableServerIp": {
+    "description": "enable server IP",
+    "message": ""
+  },
+  "contentMessagesProEnableResponseTimes": {
+    "description": "enable response times",
+    "message": ""
+  }
+}

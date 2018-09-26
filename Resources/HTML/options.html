@@ -1,0 +1,144 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../CSS/common.css"/>
+    <link rel="stylesheet" href="../CSS/extensions.css"/>
+    <link rel="stylesheet" href="../CSS/options.css"/>
+</head>
+<body>
+<ul id="navigation">
+    <li>
+        <a href="options.html" class="active"><span i18n-content="optionsDisplayName">Options</span></a>
+    </li>
+    <li>
+        <a href="thanks.html"><span i18n-content="thanksDisplayName">Thanks</span></a>
+    </li>
+    <li>
+        <a href="about.html"><span i18n-content="aboutDisplayName">About</span></a>
+    </li>
+</ul>
+<div class="page">
+    <section>
+        <div class="detail-row">
+            <div class="option-description">
+                <span i18n-content="optionsPageDisplayOptions">Display Options</span>
+                <p class="preferences-description" i18n-content="optionsPageDisplayOptionsPressEscapeToHidePanels">Press the ESC key to hide panels.</p>
+                <p class="preferences-description" i18n-content="optionsPageDisplayOptionsAutoHide">When auto-hide is enabled, the filter bar will not be shown.</p>
+            </div>
+            <div class="option-value inline-options">
+                <label class="preferences-label" for="renderMode"><span i18n-content="optionsPageDisplayOptionsShowIn">Show in</span> </label>
+                <select id="renderMode">
+                    <option value="normalMode" i18n-content="renderModeNormal">regular</option>
+                    <option value="microMode" i18n-content="renderModeMicro">micro</option>
+                    <option value="none" i18n-content="renderModeDisabled">disabled</option>
+                </select>
+                <label class="preferences-label" for="location"><span i18n-content="optionsPageDisplayOptionsModeInThe">mode, in the</span> </label>
+                <select id="location">
+                    <option value="topLeft" i18n-content="locationTopLeftCorner">Top Left corner</option>
+                    <option value="bottomLeft" i18n-content="locationBottomLeftCorner">Bottom Left corner</option>
+                    <option value="topRight" i18n-content="locationTopRightCorner">Top Right corner</option>
+                    <option value="bottomRight" i18n-content="locationBottomRightCorner">Bottom Right corner</option>
+                </select>
+                <label class="preferences-label" for="theme"><span i18n-content="optionsPageDisplayOptionsModeUsingA">using a</span> </label>
+                <select id="theme">
+                    <option value="dark" i18n-content="themeDark">Dark Theme</option>
+                    <option value="light" i18n-content="themeLight">Light Theme</option>
+                </select>
+                <div class="pro hidden">
+                    <label class="preferences-label" for="tabRequestLimit"> <span i18n-content="optionsPageDisplayOptionsAndShowThe">and show the</span> </label>
+                    <select id="tabRequestLimit">
+                        <option value="5">5</option>
+                        <option value="15">15</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                        <option value="60">60</option>
+                        <option value="70">70</option>
+                        <option value="80">80</option>
+                        <option value="90">90</option>
+                        <option value="100">100</option>
+                        <option value="110">110</option>
+                        <option value="120">120</option>
+                        <option value="130">130</option>
+                        <option value="140">140</option>
+                        <option value="150">150</option>
+                    </select>
+                    <span i18n-content="optionsPageDisplayOptionsMostRecentRequests">most recent requests</span>
+                </div>
+                <div>
+                    <select id="hidePanelAfterTimeout">
+                        <option value="1" i18n-content="doAutoHidePanels">Do auto-hide panels</option>
+                        <option value="0" i18n-content="doNotAutoHidePanels">Do not auto-hide panels </option>
+                    </select>
+                    <label class="preferences-label" for="timeout"><span i18n-content="optionsPageDisplayOptionsAutoHideAfter"> after</span> </label>
+                    <select id="timeout">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="8">8</option>
+                        <option value="13">13</option>
+                        <option value="21">21</option>
+                        <option value="34">34</option>
+                        <option value="42">42</option>
+                    </select>
+                    <span i18n-content="optionsPageDisplayOptionsAutoHideSeconds">seconds</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="option-description">
+                <label class="preferences-label" for="newHiddenRequestHeader" i18n-content="optionsPageHideRequestHeaders">Hide request headers</label>
+                <p class="preferences-description" i18n-content="optionsPageHideRequestHeadersDescription">Request headers (or patterns thereof) that will not be displayed.</p>
+            </div>
+            <div class="option-value">
+                <input type="text" value="" size="15" id="newHiddenRequestHeader" placeholder="Some-Header">
+                <button class="addon-control" id="addHiddenRequestHeader" i18n-content="buttonAdd">Add</button>
+                <div id="hiddenRequestHeaders" class="label-container"></div>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="option-description">
+                <label class="preferences-label" for="newHiddenResponseHeader" i18n-content="optionsPageHideResponseHeaders">Hide response headers</label>
+                <p class="preferences-description" i18n-content="optionsPageHideResponseHeadersDescription">Response headers (or patterns thereof) that will not be displayed.</p>
+            </div>
+            <div class="option-value">
+                <input type="text" value="" size="15" id="newHiddenResponseHeader" placeholder="X-Something">
+                <button class="addon-control" id="addHiddenResponseHeader" i18n-content="buttonAdd">Add</button>
+                <div id="hiddenResponseHeaders" class="label-container"></div>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="option-description">
+                <label class="preferences-label" for="newShownResponseHeader" i18n-content="optionsPageMicroModeHeaders">Headers to show in Micro mode</label>
+                <p class="preferences-description" i18n-content="optionsPageMicroModeHeadersDescription">Response headers (or patterns thereof) that will be shown in micro mode.</p>
+            </div>
+            <div class="option-value">
+                <input type="text" value="" size="15" id="newShownResponseHeader" placeholder="^Server$">
+                <button class="addon-control" id="addShownResponseHeader" i18n-content="buttonAdd">Add</button>
+                <div id="shownResponseHeaders" class="label-container"></div>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="option-description">
+                <label class="preferences-label" for="newMarker" i18n-content="optionsPageStringsToHightlight">Strings to highlight</label>
+                <p class="preferences-description"><span i18n-content="optionsPageStringsToHightlightDescription">Headers (or patterns thereof) that will be</span> <mark><span i18n-content="optionsPageStringsToHightlightDescriptionHighlighted">highlighted</span></mark>.</p>
+            </div>
+            <div class="option-value">
+                <input type="text" value="" size="15" id="newMarker" placeholder="Highlight-me">
+                <button class="addon-control" id="addMarker" i18n-content="buttonAdd">Add</button>
+                <div id="markers" class="label-container"></div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript" src="../JavaScript/optionsContextProvider.js"></script>
+<script type="text/javascript" src="../JavaScript/library.js"></script>
+<script type="text/javascript" src="../JavaScript/options.js"></script>
+<script type="text/javascript" src="../JavaScript/i18n.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../CSS/common.css"/>
+	<link rel="stylesheet" href="../CSS/extensions.css"/>
+	<link rel="stylesheet" href="../CSS/options.css"/>
+</head>
+<body>
+<div id="navigation">
+	<ul>
+		<li>
+			<a href="options.html"><span i18n-content="optionsDisplayName">Options</span></a>
+		</li>
+		<li>
+			<a href="plans.html" class="active"><span i18n-content="plansDisplayName">Plans</span></a>
+		</li>
+		<li>
+			<a href="about.html"><span i18n-content="aboutDisplayName">About</span></a>
+		</li>
+	</ul>
+</div>
+<div class="page">
+	<section>
+		<h1 i18n-content="plansPageTitle">Get the <em>pro</em> version</h1>
+		<div id="status"></div>
+		<p><span i18n-content="plansPageYouCan">You can</span> <strong i18n-content="plansPageTest">test</strong> <span i18n-content="plansPageTheseFeatures">all these great features</span> <strong><em i18n-content="plansPageEveryFirst">every first 15 minutes</em></strong> <span i18n-content="plansPageOfEveryHour">of every hour</span>:</p>
+		<ul class="checkmark">
+			<li i18n-content="plansPageOptionServerIp">Server IP address</li>
+			<li i18n-content="plansPageOptionSubFrameRequests">Sub-frame requests</li>
+			<li i18n-content="plansPageOptionXhrRequests">XML HTTP Requests (XHR / AJAX)</li>
+			<li i18n-content="plansPageOptionRequestTimes">Request times: time to headers received, time to first byte and time to complete</li>
+			<li i18n-content="plansPageOptionFilterBar">Use the filter bar to filter the headers</li>
+		</ul>
+		<p><span i18n-content="plansPageEnableFeatures">If you want to enable these features</span> <strong i18n-content="plansPageEnableFeaturesPermanently">permanently</strong><span i18n-content="plansPageEnableFeaturesPleaseSupport">, please support further development by donating me some beer/pizza</span>:</p>
+		<h2 i18n-content="plansPageOneTimeBeerSupport">One-time beer support</h2>
+		<table id="beerList">
+		</table>
+		<h2 i18n-content="plansPageOneTimePizzaSupport">One-time pizza support</h2>
+		<table id="pizzaList">
+		</table>
+		<h2 i18n-content="plansPageSubscriptions">Subscriptions</h2>
+		<table id="subscriptionList">
+		</table>
+		<p><a href="http://payments.google.com/" target="_blank" i18n-content="plansPageMangeSubscriptions">Manage subscription</a></p>
+	</section>
+</div>
+<script type="text/javascript" src="../JavaScript/optionsContextProvider.js"></script>
+<script type="text/javascript" src="../JavaScript/library.js"></script>
+<script type="text/javascript" src="../JavaScript/Google/buy.js"></script>
+<script type="text/javascript" src="../JavaScript/store.js"></script>
+<script type="text/javascript" src="../JavaScript/i18n.js"></script>
+</body>
+</html>
