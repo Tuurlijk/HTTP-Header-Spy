@@ -374,6 +374,14 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
                         break;
                 }
             }
+            if(options.hideonhover != "" && options.hideonhover){
+                document.getElementById(containerId).addEventListener("mouseover", function(event){
+                    document.getElementById(containerId).style.display = 'none';
+                    setTimeout(function() {
+                        document.getElementById(containerId).style.display = 'block';
+                    }, options.hideonhover * 1000);
+                });
+            }
 
             requestIds.forEach(function(requestId) {
                 // Render a request only once.

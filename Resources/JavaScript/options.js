@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 timeout: document.getElementById('timeout').value,
                 hidePanelAfterTimeout: parseInt(document.getElementById('hidePanelAfterTimeout').value, 10) === 1,
                 renderMode: document.getElementById('renderMode').value,
-                theme: document.getElementById('theme').value
+                theme: document.getElementById('theme').value,
+                hideonhover: document.getElementById('hideonhover').value
             };
 
         multiSelectFields.forEach(function(fieldId) {
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.hidePanelAfterTimeout = parseInt(document.getElementById('hidePanelAfterTimeout').value, 10) === 1;
                 localStorage.renderMode = document.getElementById('renderMode').value;
                 localStorage.theme = document.getElementById('theme').value;
+                localStorage.hideonhover = document.getElementById('hideonhover').value;
 
                 multiSelectFields.forEach(function(fieldId) {
                     localStorage[fieldId] = JSON.stringify(updatedValues[fieldId]);
@@ -91,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     theme: result.theme ? result.theme : 'light',
                     tabRequestLimit: result.tabRequestLimit ? result.tabRequestLimit : 25,
                     timeout: result.timeout ? result.timeout : 3,
+                    hideonhover: result.hideonhover ?? null,
                     hidePanelAfterTimeout: isDefined(result.hidePanelAfterTimeout) ? result.hidePanelAfterTimeout : true,
                     renderMode: result.renderMode ? result.renderMode : 'microMode',
                     hiddenRequestHeaders: result.hiddenRequestHeaders ? result.hiddenRequestHeaders : [],
@@ -106,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 theme: localStorage.theme ? localStorage.theme : 'light',
                 tabRequestLimit: localStorage.tabRequestLimit ? localStorage.tabRequestLimit : 25,
                 timeout: localStorage.timeout ? localStorage.timeout : 3,
+                hideonhover: localStorage.hideonhover ?? null,
                 hidePanelAfterTimeout: isDefined(localStorage.hidePanelAfterTimeout) ? localStorage.hidePanelAfterTimeout : true,
                 renderMode: localStorage.renderMode ? localStorage.renderMode : 'microMode',
                 hiddenRequestHeaders: isDefined(localStorage.hiddenRequestHeaders) ? JSON.parse(localStorage.hiddenRequestHeaders) : [],
@@ -124,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('hidePanelAfterTimeout').value = options.hidePanelAfterTimeout ? 1 : 0;
         document.getElementById('renderMode').value = options.renderMode;
         document.getElementById('theme').value = options.theme;
+        document.getElementById('hideonhover').value = options.hideonhover;
 
         options.hiddenRequestHeaders.forEach(function(element) {
             addElement(element, 'newHiddenRequestHeader', 'hiddenRequestHeaders');
@@ -155,6 +160,9 @@ document.addEventListener('DOMContentLoaded', function() {
         saveOptions();
     });
     document.getElementById('theme').addEventListener('change', function() {
+        saveOptions();
+    });
+    document.getElementById('hideonhover').addEventListener('keyup', function() {
         saveOptions();
     });
 

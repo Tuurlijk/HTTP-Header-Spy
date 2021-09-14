@@ -386,5 +386,13 @@
   "contentMessagesProEnableResponseTimes": {
     "description": "enable response times",
     "message": "enable response times"
+  },
+  "hideonhover": {
+    "description": "Hide on hover for",
+    "message": "Hide on hover for"
+  },
+  "hideonhovernote": {
+    "description": "leave it empty to disable",
+    "message": "leave it empty to disable"
   }
 }
