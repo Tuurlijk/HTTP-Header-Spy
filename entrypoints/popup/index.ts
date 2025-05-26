@@ -4,7 +4,8 @@ import {
   restoreOptions as getOptions, 
   getPanel, 
   getToolbar, 
-  isValidUrl 
+  isValidUrl,
+  containerId
 } from '@/utils/library';
 import type { ExtensionOptions } from '@/utils/library';
 import '@/assets/css/content.css';
@@ -146,7 +147,7 @@ async function loadHeaderData() {
  * Display headers in the popup
  */
 function displayHeaders(headerStore: any, options: ExtensionOptions) {
-  const resultContainer = document.getElementById('result');
+  const resultContainer = document.getElementById(containerId);
   if (!resultContainer || !headerStore) {
     console.error('Container or headerStore not found', { resultContainer, headerStore });
     return;

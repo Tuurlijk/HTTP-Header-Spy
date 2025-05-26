@@ -81,9 +81,13 @@ export default defineBackground(() => {
    */
   function enablePopup(tab: chrome.tabs.Tab): void {
     if (tab.id && isValidUrl(tab.url || '')) {
-      browser.action.enable(tab.id);
+      if (browser.action && browser.action.enable) {
+        browser.action.enable(tab.id);
+      }
     } else if (tab.id) {
-      browser.action.disable(tab.id);
+      if (browser.action && browser.action.disable) {
+        browser.action.disable(tab.id);
+      }
     }
   }
 
