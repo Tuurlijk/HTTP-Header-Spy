@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HTTP Header Spy Options</title>
+</head>
+<body class="options">
+  <div class="container">
+    <h1 i18n-content="optionsPageTitle">HTTP Header Spy Options</h1>
+    
+    <section class="option-group">
+      <h2 i18n-content="optionsPageDisplayOptionsTitle">Display Options</h2>
+      
+      <div class="option-row">
+        <label for="renderMode" i18n-content="optionsPageDisplayOptionsShowIn">Show in</label>
+        <select id="renderMode">
+          <option value="normalMode" i18n-content="renderModeNormal">regular</option>
+          <option value="microMode" i18n-content="renderModeMicro">micro</option>
+          <option value="none" i18n-content="renderModeDisabled">disabled</option>
+        </select>
+        
+        <label for="location" i18n-content="optionsPageDisplayOptionsModeInThe">mode, in the</label>
+        <select id="location">
+          <option value="topLeft" i18n-content="locationTopLeftCorner">Top Left corner</option>
+          <option value="bottomLeft" i18n-content="locationBottomLeftCorner">Bottom Left corner</option>
+          <option value="topRight" i18n-content="locationTopRightCorner">Top Right corner</option>
+          <option value="bottomRight" i18n-content="locationBottomRightCorner">Bottom Right corner</option>
+        </select>
+        
+        <label for="theme" i18n-content="optionsPageDisplayOptionsModeUsingA">using a</label>
+        <select id="theme">
+          <option value="dark" i18n-content="themeDark">Dark Theme</option>
+          <option value="light" i18n-content="themeLight">Light Theme</option>
+        </select>
+      </div>
+      
+      <div class="option-row">
+        <label for="tabRequestLimit" i18n-content="optionsPageDisplayOptionsAndShowThe">and show the</label>
+        <select id="tabRequestLimit">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+          <option value="60">60</option>
+          <option value="70">70</option>
+          <option value="80">80</option>
+          <option value="90">90</option>
+          <option value="100">100</option>
+          <option value="110">110</option>
+          <option value="120">120</option>
+          <option value="130">130</option>
+          <option value="140">140</option>
+          <option value="150">150</option>
+        </select>
+        <span i18n-content="optionsPageDisplayOptionsMostRecentRequests">most recent requests</span>
+      </div>
+      
+      <div class="option-row">
+        <select id="hidePanelAfterTimeout">
+          <option value="1" i18n-content="doAutoHidePanels">Do auto-hide panels</option>
+          <option value="0" i18n-content="doNotAutoHidePanels">Do not auto-hide panels</option>
+        </select>
+        
+        <label for="timeout" i18n-content="optionsPageDisplayOptionsAutoHideAfter">after</label>
+        <select id="timeout">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="8">8</option>
+          <option value="13">13</option>
+          <option value="21">21</option>
+          <option value="34">34</option>
+          <option value="42">42</option>
+        </select>
+        <span i18n-content="optionsPageDisplayOptionsAutoHideSeconds">seconds</span>
+      </div>
+      
+      <div class="option-row">
+        <label for="hideonhover" i18n-content="hideonhover">Hide On Hover For</label>
+        <input type="number" id="hideonhover" value="" placeholder="Enter How many Sec" />
+        <small i18n-content="hideonhovernote">Set it 0 or leave it empty to disable</small>
+      </div>
+    </section>
+    
+    <section class="option-group">
+      <h2 i18n-content="optionsPageHeadersTitle">Headers</h2>
+      
+      <div class="option-row">
+        <h3 i18n-content="optionsPageHeadersHiddenRequestHeaders">Hidden Request Headers</h3>
+        <div id="hiddenRequestHeaders" class="tag-list"></div>
+        <input type="text" id="hiddenRequestHeadersInput" placeholder="Add header name..." />
+        <button id="addHiddenRequestHeader" i18n-content="buttonAdd">Add</button>
+      </div>
+      
+      <div class="option-row">
+        <h3 i18n-content="optionsPageHeadersHiddenResponseHeaders">Hidden Response Headers</h3>
+        <div id="hiddenResponseHeaders" class="tag-list"></div>
+        <input type="text" id="hiddenResponseHeadersInput" placeholder="Add header name..." />
+        <button id="addHiddenResponseHeader" i18n-content="buttonAdd">Add</button>
+      </div>
+    </section>
+    
+    <div class="buttons">
+      <button id="save" i18n-content="buttonSave">Save</button>
+      <button id="reset" i18n-content="buttonReset">Reset to Defaults</button>
+    </div>
+    
+    <div id="status" class="status"></div>
+  </div>
+</body>
+</html>

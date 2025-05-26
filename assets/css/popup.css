@@ -1,0 +1,171 @@
+body {
+	color: rgb(100, 100, 100);
+	font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	line-height: 13px;
+	min-width: 200px;
+	margin: 0;
+}
+
+/*
+ * Remove blue outline that Chrome makes when autoselecting the first link
+ */
+*:focus {
+	outline: none;
+}
+
+/*
+ * Shadows are visible under slightly transparent text color
+ */
+h1 {
+	font-size: 12px;
+	font-weight: bold;
+	margin: 4px 8px;
+	text-shadow: 1px 1px 1px white, 0 0 0 black, 1px 1px 1px white;
+	white-space: nowrap;
+	line-height: 23px;
+}
+
+nav {
+	display: flex;
+}
+
+.separator {
+	border-top: 1px solid #b3b3b3;
+	margin: 4px 0;
+}
+
+.menu {
+	flex: 1;
+	vertical-align: middle;
+	text-align: right;
+	padding: 9px 9px 0 0;
+}
+
+.title {
+	width: auto;
+}
+
+.donateButton {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+}
+
+#settings {
+	text-align: left;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	border: 1px solid #b3b3b3;
+	border-top: 0;
+	background-color: white;
+	margin: 0;
+	padding: 0.5em;
+	z-index: 1;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.26);
+}
+
+#settings h2 {
+	font-size: 12px;
+	font-weight: bold;
+	margin: 0 0 4px 0;
+	text-shadow: 1px 1px 1px white, 0 0 0 black, 1px 1px 1px white;
+	white-space: nowrap;
+	line-height: 23px;
+}
+
+#settings .closeButton {
+	cursor: pointer;
+	position: absolute;
+	top: 4px;
+	right: 8px;
+	font-size: 13px !important;
+	text-align: right;
+	width: 25px;
+	height: 25px;
+}
+
+.hidden {
+	display: none;
+}
+
+.visible {
+	transition: opacity 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+	height: auto;
+	opacity: 1;
+	position: relative;
+	z-index: 1;
+	visibility: visible;
+	overflow: inherit;
+}
+
+#result {
+	min-width: 550px;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .defaultMessage:hover,
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .defaultMessage {
+	text-align: center;
+	padding: 1em;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .optionsButtonInDefaultMessage {
+	text-align: center;
+}
+
+#settingsIcon {
+	z-index: 2;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .normalMode.visible {
+	background: transparent;
+	animation: none;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ #toolBar {
+	border-left: 0;
+	border-bottom: 0;
+	border-right: 0;
+	box-shadow: none;
+	background-color: white;
+	position: fixed;
+	bottom: 0;
+	z-index: 1;
+	width: 100%;
+	padding: 4px;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .toolBar {
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .thankYou {
+	color: #cc0000;
+	padding-right: 0.5rem;
+	padding-top: 2px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ {
+	position: relative;
+	z-index: 0;
+	padding-bottom: 30px;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .normalMode {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	margin-top: 0;
+}
+
+#httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ .normalMode:not(:first-child) {
+	border-top: 1px solid #b3b3b3;
+}
