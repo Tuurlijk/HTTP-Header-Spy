@@ -147,7 +147,10 @@ async function loadHeaderData() {
  */
 function displayHeaders(headerStore: any, options: ExtensionOptions) {
   const resultContainer = document.getElementById('result');
-  if (!resultContainer || !headerStore) return;
+  if (!resultContainer || !headerStore) {
+    console.error('Container or headerStore not found', { resultContainer, headerStore });
+    return;
+  }
   
   while (resultContainer.firstChild) {
     resultContainer.removeChild(resultContainer.firstChild);

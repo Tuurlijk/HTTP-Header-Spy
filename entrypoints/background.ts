@@ -376,12 +376,15 @@ export default defineBackground(() => {
     delete headerStore[String(tabId)];
   });
 
-  browser.runtime.onMessage.addListener((message, sender) => {
+  browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.msg === 'storeRequestTypeSelection') {
       browser.storage.local.set({ activeRequestTypes: message.activeRequestTypes });
+      return false;
     } else if (message.msg === 'getHeadersForTab') {
-      return Promise.resolve({ headerStore: headerStore[String(message.tabId)] || {} });
+      sendResponse({ headerStore: headerStore[String(message.tabId)] || {} });
+      return true;
     }
+    return false;
   });
 
   browser.storage.onChanged.addListener((changes, namespace) => {
