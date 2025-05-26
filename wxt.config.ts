@@ -13,7 +13,8 @@ export default defineConfig({
       'tabs',
       'activeTab', 
       'storage',
-      'webRequest'
+      'webRequest',
+      'webRequestBlocking'
     ],
     host_permissions: [
       'http://*/*',
