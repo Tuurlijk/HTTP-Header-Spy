@@ -147,9 +147,10 @@ async function loadHeaderData() {
  * Display headers in the popup
  */
 function displayHeaders(headerStore: any, options: ExtensionOptions) {
-  const resultContainer = document.getElementById(containerId);
+  const container = document.getElementById(containerId);
+  const resultContainer = container ? container.querySelector('#result') : null;
   if (!resultContainer || !headerStore) {
-    console.error('Container or headerStore not found', { resultContainer, headerStore });
+    console.error('Container or headerStore not found', { container, resultContainer, headerStore });
     return;
   }
   

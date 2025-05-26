@@ -54,11 +54,13 @@ export default defineBackground(() => {
    * Prune store
    */
   function pruneHeaderStore(tabId: string): void {
-    const tabRequestLimit = localStorage.tabRequestLimit ? localStorage.tabRequestLimit : 25;
-    const requestIds = Object.keys(headerStore[tabId]);
-    if (requestIds.length > tabRequestLimit) {
-      delete headerStore[tabId][requestIds.splice(1, 1)[0]];
-    }
+    browser.storage.local.get('tabRequestLimit').then((result: { tabRequestLimit?: number }) => {
+      const tabRequestLimit = result.tabRequestLimit || 25;
+      const requestIds = Object.keys(headerStore[tabId]);
+      if (requestIds.length > tabRequestLimit) {
+        delete headerStore[tabId][requestIds.splice(1, 1)[0]];
+      }
+    });
   }
 
   /**
@@ -303,7 +305,6 @@ export default defineBackground(() => {
       
       const requestId = String(info.requestId);
       const tabId = String(info.tabId);
-      const urlParser = document.createElement('a');
       
       if (!isDefined(headerStore[tabId]) || !isDefined(headerStore[tabId][requestId])) {
         return;
@@ -311,9 +312,9 @@ export default defineBackground(() => {
       
       const requestIndex = headerStore[tabId][requestId].request.requestIndex;
       
-      urlParser.href = info.url;
-      if (urlParser.search.length) {
-        const get = new URLSearchParams(urlParser.search);
+      const url = new URL(info.url);
+      if (url.search.length) {
+        const get = new URLSearchParams(url.search);
         const parameters: Array<{key: string, value: string}> = [];
         
         get.forEach((value, key) => {
