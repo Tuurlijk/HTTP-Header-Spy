@@ -1,5 +1,11 @@
 import { browser } from 'wxt/browser';
-import { saveOption, restoreOptions as getOptions } from '@/utils/library';
+import { 
+  saveOption, 
+  restoreOptions as getOptions, 
+  getPanel, 
+  getToolbar, 
+  isValidUrl 
+} from '@/utils/library';
 import type { ExtensionOptions } from '@/utils/library';
 import '@/assets/css/content.css';
 import '@/assets/css/contentLight.css';
@@ -115,29 +121,168 @@ function setupOptionsChangeHandlers() {
  * Load header data for the current tab
  */
 async function loadHeaderData() {
-  const tabs = await browser.tabs.query({ active: true, currentWindow: true });
-  if (tabs.length > 0) {
-    const currentTab = tabs[0];
-    browser.runtime.sendMessage({ 
-      msg: 'getHeadersForTab', 
-      tabId: currentTab.id 
-    }, (response) => {
-      if (response && response.headers) {
-        displayHeaders(response.headers);
-      }
+  try {
+    const tabs = await browser.tabs.query({ active: true, currentWindow: true });
+    if (tabs.length === 0) return;
+    
+    const tab = tabs[0];
+    if (!tab.id || !isValidUrl(tab.url || '')) return;
+
+    const response = await browser.runtime.sendMessage({
+      msg: 'getHeadersForTab',
+      tabId: tab.id
     });
+
+    if (response && response.headerStore) {
+      const options = await getOptions();
+      displayHeaders(response.headerStore, options);
+    }
+  } catch (error) {
+    console.error('Failed to load header data:', error);
   }
 }
 
 /**
  * Display headers in the popup
  */
-function displayHeaders(headers: any) {
+function displayHeaders(headerStore: any, options: ExtensionOptions) {
   const resultContainer = document.getElementById('result');
-  if (!resultContainer || !headers) return;
+  if (!resultContainer || !headerStore) return;
   
-  resultContainer.innerHTML = '';
+  while (resultContainer.firstChild) {
+    resultContainer.removeChild(resultContainer.firstChild);
+  }
   
+  const requestIds = Object.keys(headerStore);
+  if (requestIds.length === 0) {
+    const defaultMessage = document.createElement('p');
+    defaultMessage.className = 'defaultMessage';
+    defaultMessage.textContent = browser.i18n.getMessage('popupDefaultMessage') || 'No headers were captured yet.';
+    
+    const optionsButtonDiv = document.createElement('div');
+    optionsButtonDiv.className = 'optionsButtonInDefaultMessage';
+    
+    const optionsButton = document.createElement('button');
+    optionsButton.id = 'goToOptions';
+    optionsButton.textContent = browser.i18n.getMessage('buttonOptions') || 'Options';
+    optionsButton.addEventListener('click', () => {
+      browser.runtime.openOptionsPage();
+    });
+    
+    optionsButtonDiv.appendChild(optionsButton);
+    resultContainer.appendChild(defaultMessage);
+    resultContainer.appendChild(optionsButtonDiv);
+    return;
+  }
+  
+  requestIds.forEach(requestId => {
+    if (requestId === 'isContentReady') return;
+    
+    const panel = getPanel(headerStore[requestId], requestId, options);
+    if (panel && panel.children.length) {
+      resultContainer.appendChild(panel);
+    }
+  });
+  
+  if (!resultContainer.querySelector('#toolBar')) {
+    const toolbar = getToolbar(options);
+    if (toolbar) {
+      resultContainer.appendChild(toolbar);
+      
+      const typeElements = resultContainer.querySelectorAll('.requestTypes .type');
+      typeElements.forEach(element => {
+        element.addEventListener('click', (event) => {
+          const target = event.target as HTMLElement;
+          target.classList.toggle('active');
+          target.classList.toggle('inactive');
+          
+          const activeTypes: string[] = [];
+          resultContainer.querySelectorAll('.requestTypes .type.active').forEach(el => {
+            const type = el.classList[1];
+            if (type) activeTypes.push(type);
+          });
+          
+          browser.runtime.sendMessage({
+            msg: 'storeRequestTypeSelection',
+            activeRequestTypes: activeTypes
+          });
+        });
+      });
+      
+      const filterInput = resultContainer.querySelector('#inlineFilterInput') as HTMLInputElement;
+      const filterAllowRegex = resultContainer.querySelector('#inlineFilterAllowRegex') as HTMLInputElement;
+      
+      if (filterInput && filterAllowRegex) {
+        filterInput.addEventListener('keyup', () => {
+          const container = document.getElementById('result');
+          if (container) {
+            const query = filterInput.value;
+            const isRegex = filterAllowRegex.checked;
+            
+            if (query) {
+              try {
+                if (isRegex) {
+                  const regex = new RegExp(query, 'ig');
+                  Array.from(container.getElementsByTagName('tr')).forEach((element) => {
+                    if (element.textContent && element.textContent.match(regex) !== null) {
+                      element.style.display = 'table-row';
+                    } else {
+                      element.style.display = 'none';
+                    }
+                  });
+                } else {
+                  Array.from(container.getElementsByTagName('tr')).forEach((element) => {
+                    if (element.textContent && element.textContent.toLowerCase().includes(query.toLowerCase())) {
+                      element.style.display = 'table-row';
+                    } else {
+                      element.style.display = 'none';
+                    }
+                  });
+                }
+              } catch (e) {
+                console.error('Invalid regex:', e);
+              }
+            } else {
+              Array.from(container.getElementsByTagName('tr')).forEach((element) => {
+                element.style.display = 'table-row';
+              });
+            }
+          }
+        });
+        
+        filterAllowRegex.addEventListener('click', () => {
+          const container = document.getElementById('result');
+          if (container && filterInput.value) {
+            const query = filterInput.value;
+            const isRegex = filterAllowRegex.checked;
+            
+            try {
+              if (isRegex) {
+                const regex = new RegExp(query, 'ig');
+                Array.from(container.getElementsByTagName('tr')).forEach((element) => {
+                  if (element.textContent && element.textContent.match(regex) !== null) {
+                    element.style.display = 'table-row';
+                  } else {
+                    element.style.display = 'none';
+                  }
+                });
+              } else {
+                Array.from(container.getElementsByTagName('tr')).forEach((element) => {
+                  if (element.textContent && element.textContent.toLowerCase().includes(query.toLowerCase())) {
+                    element.style.display = 'table-row';
+                  } else {
+                    element.style.display = 'none';
+                  }
+                });
+              }
+            } catch (e) {
+              console.error('Invalid regex:', e);
+            }
+          }
+        });
+      }
+    }
+  }
 }
 
 /**

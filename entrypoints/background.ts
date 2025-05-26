@@ -379,6 +379,8 @@ export default defineBackground(() => {
   browser.runtime.onMessage.addListener((message, sender) => {
     if (message.msg === 'storeRequestTypeSelection') {
       browser.storage.local.set({ activeRequestTypes: message.activeRequestTypes });
+    } else if (message.msg === 'getHeadersForTab') {
+      return Promise.resolve({ headerStore: headerStore[String(message.tabId)] || {} });
     }
   });
 
