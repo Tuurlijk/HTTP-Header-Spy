@@ -94,9 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (chrome.runtime.lastError || !response || !response.headers) {
                 return;
             }
-            let headerStore = response.headers;
-            let requestIds = Object.keys(headerStore),
-                store = headerStore[String(tab.id)],
+            let store = response.headers;
+            let requestIds = Object.keys(store),
                 containerElement = document.getElementById('result');
 
             while (containerElement.firstChild) {
