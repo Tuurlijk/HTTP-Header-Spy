@@ -1,7 +1,7 @@
 /*jshint bitwise:true, curly:true, eqeqeq:true, forin:true, globalstrict: true,
  latedef:true, noarg:true, noempty:true, nonew:true, undef:true, maxlen:256,
  strict:true, trailing:true, boss:true, browser:true, devel:true, jquery:true */
-/*global chrome, options, isChrome, document, getSettings, isValidUrl, localStorage, tabId, changeInfo, tab, openTab, localize */
+/*global chrome, options, isChrome, isValidUrl, tabId, changeInfo, tab, openTab */
 
 'use strict';
 
@@ -18,6 +18,14 @@ if (typeof browser === 'undefined' || navigator.userAgent.indexOf('Firefox') ===
     isChrome = true;
 } else {
     isChrome = false;
+}
+
+/**
+ * Check if the user has access to pro features
+ * @return {Boolean}
+ */
+function isProVersion() {
+    return true;
 }
 
 /**
@@ -213,7 +221,7 @@ function isRequestLoggable(info) {
  * Prune store
  */
 function pruneHeaderStore(tabId) {
-    let tabRequestLimit = localStorage.tabRequestLimit ? localStorage.tabRequestLimit : 25,
+    let tabRequestLimit = (options && options.tabRequestLimit) ? options.tabRequestLimit : 25,
         requestIds = Object.keys(headerStore[tabId]);
     if (requestIds.length > tabRequestLimit) {
         delete headerStore[tabId][requestIds.splice(1, 1)];
@@ -428,7 +436,7 @@ chrome.webRequest.onSendHeaders.addListener(
         }
         let requestId = String(info.requestId),
             tabId = String(info.tabId),
-            urlParser = document.createElement('a'),
+            urlParser = new URL(info.url),
             requestIndex;
         // Maybe the request was already removed from the queue
         if (!isDefined(headerStore[tabId]) || !isDefined(headerStore[tabId][requestId])) {
@@ -437,7 +445,6 @@ chrome.webRequest.onSendHeaders.addListener(
         requestIndex = headerStore[tabId][requestId].request.requestIndex;
 
         // Get parameters
-        urlParser.href = info.url;
         if (urlParser.search.length) {
             let get = new URLSearchParams(urlParser.search),
                 parameters = [];
