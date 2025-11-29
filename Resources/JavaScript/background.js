@@ -441,6 +441,11 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
             storeActiveRequestTypes(message.activeRequestTypes);
             break;
     }
+    if (message.action === 'getHeaders') {
+        let tabId = String(message.tabId);
+        sendResponse({headers: headerStore[tabId] || {}});
+        return true; // Keep message channel open for async response
+    }
     // Maybe check sender?
 });
 

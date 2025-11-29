@@ -90,13 +90,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         document.getElementById('extensionName').setAttribute('title', tab.id);
-        chrome.runtime.getBackgroundPage(function(backgroundPage) {
-            let headerStore = backgroundPage.headerStore;
-
-            if (typeof headerStore === 'undefined') {
+        chrome.runtime.sendMessage({action: 'getHeaders', tabId: tab.id}, function(response) {
+            if (chrome.runtime.lastError || !response || !response.headers) {
                 return;
             }
-            let requestIds = Object.keys(headerStore[String(tab.id)]),
+            let headerStore = response.headers;
+            let requestIds = Object.keys(headerStore),
                 store = headerStore[String(tab.id)],
                 containerElement = document.getElementById('result');
 
