@@ -270,6 +270,7 @@ function createMicroPanel(headers, requestId, options) {
  * Listen for messages
  */
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    console.log('Content script received message:', message.msg);
     // switch (message.msg) {
     //     case 'responseCompleted':
     //         console.log('responseCompleted: ');
@@ -471,6 +472,4 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     }
 });
 
-if (isChrome) {
-    restoreOptions();
-}
+restoreOptions();
