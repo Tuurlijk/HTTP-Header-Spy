@@ -110,6 +110,37 @@ function enablePopup(tab) {
  * @param {object} tab A tab object.
  * @return {*} Not defined.
  */
+function injectCSS(tabId) {
+    chrome.scripting.insertCSS({
+        target: { tabId: tabId },
+        files: ['/Resources/CSS/content.css']
+    }).catch(function(error) {
+        console.log('CSS injection failed:', error);
+    });
+    if (options && options.theme === 'light') {
+        chrome.scripting.insertCSS({
+            target: { tabId: tabId },
+            files: ['/Resources/CSS/contentLight.css']
+        }).catch(function(error) {
+            console.log('Light theme CSS injection failed:', error);
+        });
+    } else {
+        chrome.scripting.insertCSS({
+            target: { tabId: tabId },
+            files: ['/Resources/CSS/contentDark.css']
+        }).catch(function(error) {
+            console.log('Dark theme CSS injection failed:', error);
+        });
+    }
+}
+
+function markContentReady(tabId) {
+    // Mark content as ready to receive headers
+    if (isDefined(headerStore[String(tabId)])) {
+        delete headerStore[String(tabId)].isContentReady;
+    }
+}
+
 function injectStyleSheetsIntoContent(tab) {
     if (!isValidUrl(tab.url)) {
         return;
@@ -118,38 +149,29 @@ function injectStyleSheetsIntoContent(tab) {
         tab.id,
         {msg: 'isStyleSheetInjected'},
         function(response) {
+            // Check for connection errors
+            if (chrome.runtime.lastError) {
+                // Content script not ready, inject CSS anyway
+                injectCSS(tab.id);
+                markContentReady(tab.id);
+                return;
+            }
             // Inject CSS if content script doesn't respond or says styles aren't injected
             if (!isDefined(response) || !response.isStyleSheetInjected) {
-                chrome.scripting.insertCSS({
-                    target: { tabId: tab.id },
-                    files: ['/Resources/CSS/content.css']
-                }).catch(function(error) {
-                    console.log('CSS injection failed:', error);
-                });
-                if (options && options.theme === 'light') {
-                    chrome.scripting.insertCSS({
-                        target: { tabId: tab.id },
-                        files: ['/Resources/CSS/contentLight.css']
-                    }).catch(function(error) {
-                        console.log('Light theme CSS injection failed:', error);
-                    });
-                } else {
-                    chrome.scripting.insertCSS({
-                        target: { tabId: tab.id },
-                        files: ['/Resources/CSS/contentDark.css']
-                    }).catch(function(error) {
-                        console.log('Dark theme CSS injection failed:', error);
-                    });
-                }
+                injectCSS(tab.id);
                 chrome.tabs.sendMessage(
                     tab.id,
-                    {msg: 'styleSheetIsInjected'}
+                    {msg: 'styleSheetIsInjected'},
+                    function(response) {
+                        // Ignore connection errors - content script may not be ready yet
+                        if (chrome.runtime.lastError) {
+                            return;
+                        }
+                    }
                 );
             }
             // Mark content as ready to receive headers
-            if (isDefined(headerStore[String(tab.id)])) {
-                delete headerStore[String(tab.id)].isContentReady;
-            }
+            markContentReady(tab.id);
         }
     );
 }
@@ -465,6 +487,12 @@ function sendHeadersToContent(tabId, url, headers, message) {
         msg: message,
         headers: headers,
         options: options || {}
+    }, function(response) {
+        // Ignore connection errors - content script may not be ready yet
+        if (chrome.runtime.lastError) {
+            // This is expected when content script hasn't loaded
+            return;
+        }
     });
 }
 
@@ -543,6 +571,11 @@ function sendCurrentRequestTypesToTabs(activeRequestTypes) {
                 chrome.tabs.sendMessage(tab.id, {
                     msg: 'requestTypeSelectionDidChange',
                     activeRequestTypes: activeRequestTypes
+                }, function(response) {
+                    // Ignore connection errors - content script may not be ready
+                    if (chrome.runtime.lastError) {
+                        return;
+                    }
                 });
             }
         });
