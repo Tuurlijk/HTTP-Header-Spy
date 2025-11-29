@@ -1,7 +1,7 @@
 /*jshint bitwise:true, curly:true, eqeqeq:true, forin:true, globalstrict: true,
  latedef:true, noarg:true, noempty:true, nonew:true, undef:true, maxlen:256,
  strict:true, trailing:true, boss:true, browser:true, devel:true, jquery:true */
-/*global chrome, containerId, hasLicense, options, isValidUrl, sanitizeString, getPanel, getSettings, htmlEntities, Mark, googleAnalyticsId */
+/*global chrome, containerId, options, isValidUrl, sanitizeString, getPanel, getSettings, htmlEntities, Mark, googleAnalyticsId */
 'use strict';
 
 /**
@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('extensionName').setAttribute('title', tab.id);
         chrome.runtime.getBackgroundPage(function(backgroundPage) {
             let headerStore = backgroundPage.headerStore;
-            hasLicense = backgroundPage.hasLicense;
 
             if (typeof headerStore === 'undefined') {
                 return;

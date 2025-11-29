@@ -1,7 +1,7 @@
 /*jshint bitwise:true, curly:true, eqeqeq:true, forin:true, globalstrict: true,
  latedef:true, noarg:true, noempty:true, nonew:true, undef:true, maxlen:256,
  strict:true, trailing:true, boss:true, browser:true, devel:true, jquery:true */
-/*global chrome, hasLicense, isChrome, options, containerId, document, localStorage, tabId, changeInfo, tab, openTab, localize, Mark */
+/*global chrome, isChrome, options, containerId, document, localStorage, tabId, changeInfo, tab, openTab, localize, Mark */
 
 'use strict';
 
@@ -238,9 +238,6 @@ function createMicroPanel(headers, requestId, options) {
             responseTimeLine.appendChild(responseTimeLineText);
             panel.appendChild(responseTimeLine);
             panel.appendChild(document.createTextNode(separator));
-        } else {
-            panel.appendChild(getPlansTeaser('? ms'));
-            panel.appendChild(document.createTextNode(separator));
         }
 
         // headers
@@ -315,7 +312,6 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
                 requestIds = Object.keys(message.headers),
                 headers;
 
-            hasLicense = message.hasLicense;
 
             if (containerElement.children.length >= options.tabRequestLimit) {
                 let xhrCount = containerElement.querySelectorAll("[data-request-type='xmlhttprequest']").length,

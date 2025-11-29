@@ -1,49 +1,14 @@
 /*jshint bitwise:true, curly:true, eqeqeq:true, forin:true, globalstrict: true,
  latedef:true, noarg:true, noempty:true, nonew:true, undef:true, maxlen:256,
  strict:true, trailing:true, boss:true, browser:true, devel:true, jquery:true */
-/*global chrome, google, hasLicense, validProducts, options, isChrome, document, getSettings, isValidUrl, localStorage, tabId, changeInfo, tab, openTab, localize */
+/*global chrome, options, isChrome, document, getSettings, isValidUrl, localStorage, tabId, changeInfo, tab, openTab, localize */
 
 'use strict';
 
 // Import dependencies for service worker
-importScripts('./Google/buy.js', './library.js');
+importScripts('./library.js');
 
-var activeLicense,
-    headerStore = {};
-
-/**
- * When we get licenses, set the active license if it's valid
- */
-function onLicenseUpdate(response) {
-    // console.log('onLicenseUpdate', response);
-    var licenses = response.response.details,
-        count = licenses.length;
-    for (var i = 0; i < count; i++) {
-        var license = licenses[i];
-        if (validProducts.includes(license.sku)) {
-            activeLicense = license;
-            hasLicense = true;
-        }
-    }
-}
-
-/**
- * Log failed license update
- */
-function onLicenseUpdateFailed(response) {
-    console.log('onLicenseUpdateFailed', response);
-}
-
-/**
- * Get the list of purchased products from the Chrome Web Store
- */
-function getLicenses() {
-    google.payments.inapp.getPurchases({
-        'parameters': {env: 'prod'},
-        'success': onLicenseUpdate,
-        'failure': onLicenseUpdateFailed
-    });
-}
+var headerStore = {};
 
 /**
  * Enable HTTP Header Spy on tabs with valid urls
@@ -53,9 +18,9 @@ function getLicenses() {
  */
 function enablePopup(tab) {
     if (isValidUrl(tab.url)) {
-        chrome.browserAction.enable(tab.id);
+        chrome.action.enable(tab.id);
     } else {
-        chrome.browserAction.disable(tab.id);
+        chrome.action.disable(tab.id);
     }
 }
 
@@ -405,7 +370,6 @@ function sendHeadersToContent(tabId, url, headers, message) {
     }
     chrome.tabs.sendMessage(tabId, {
         msg: message,
-        hasLicense: hasLicense,
         headers: headers,
         options: options
     });
@@ -505,5 +469,4 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
     }
 });
 
-// getLicenses();
 restoreOptions();

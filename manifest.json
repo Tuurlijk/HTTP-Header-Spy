@@ -34,12 +34,6 @@
     "48": "Resources/Icons/icon48.png",
     "128": "Resources/Icons/icon128.png"
   },
-  "oauth2": {
-    "client_id": "344825410658-1hrj72o88dvpau57j8sdvhi6l01a8prg.apps.googleusercontent.com",
-    "scopes": [
-      "https://www.googleapis.com/auth/chromewebstore.readonly"
-    ]
-  },
   "options_ui": {
     "page": "Resources/HTML/options.html",
     "open_in_tab": false
@@ -58,13 +52,4 @@
       "run_at": "document_idle"
     }
   ],
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "Resources/HTML/plans.html",
-        "Resources/HTML/thanks.html"
-      ],
-      "matches": ["http://*/*", "https://*/*"]
-    }
-  ]
 }

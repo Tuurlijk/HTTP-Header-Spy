@@ -5,28 +5,10 @@
 
 'use strict';
 
-var hasLicense = true,
-    isChrome = true,
+var isChrome = true,
     googleAnalyticsId = 'UA-3541346-13',
     containerId = 'httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ',
-    options,
-    validProducts = [
-        'lifetime_subscription',
-        'yearly_subscription',
-        'monthly_subscription',
-        'one_beer',
-        'two_beers',
-        'three_beers',
-        'four_beers',
-        'six_pack',
-        'ten_beers',
-        'twenty_beers',
-        'one_pizza',
-        'two_pizzas',
-        'three_pizzas',
-        'four_pizzas',
-        'five_pizzas'
-    ];
+    options;
 
 if (typeof InstallTrigger !== 'undefined') {
     isChrome = false;
@@ -45,31 +27,9 @@ function isDefined(object) {
  * @return {Boolean}
  */
 function isProVersion() {
-    var now = new Date(),
-        minutes = now.getMinutes();
-
-    return hasLicense || minutes < 16;
+    return true;
 }
 
-/**
- * Show plans teaser
- *
- * @param {string} message
- * @param {string} element
- * @return {Node}
- */
-function getPlansTeaser(message, element = 'span') {
-    let button = document.createElement('a'),
-        teaser = document.createElement(element);
-    teaser.classList.add('teaser', 'value');
-    button.href = chrome.runtime.getURL('/Resources/HTML/plans.html');
-    button.target = '_blank';
-    button.className = 'button';
-    button.title = message;
-    button.appendChild(document.createTextNode(message));
-    teaser.appendChild(button);
-    return teaser;
-}
 
 /**
  * Get pro version teaser
@@ -77,29 +37,7 @@ function getPlansTeaser(message, element = 'span') {
  * @param {object} options
  * @return {Node}
  */
-function getProVersionTeaser(options) {
-    let toolBarContainer = document.createElement('div');
-    toolBarContainer.className = options.renderMode;
-    toolBarContainer.id = 'toolBar';
-    toolBarContainer.appendChild(getPlansTeaser(chrome.i18n.getMessage('contentMessagesEnableExtraOptions'), 'p'));
-    return toolBarContainer;
-}
 
-/**
- * Thank you teaser
- *
- * @param {object} options
- * @return {Node}
- */
-function thankYouTeaser(options) {
-    let thankYouLink = document.createElement('a');
-    thankYouLink.className = 'thankYou';
-    thankYouLink.href = chrome.runtime.getURL('/Resources/HTML/thanks.html');
-    thankYouLink.target = '_blank';
-    thankYouLink.title = chrome.i18n.getMessage('aboutPageContentSayThanks');
-    thankYouLink.appendChild(document.createTextNode('♥'));
-    return thankYouLink;
-}
 
 /**
  * Format bytes in human readable form
@@ -445,8 +383,6 @@ function getPanel(headers, requestId, options, hasCloseButton = false) {
             }
             responseTimeLine.appendChild(responseTimeLineText);
             panel.appendChild(responseTimeLine);
-        } else {
-            panel.appendChild(getPlansTeaser(chrome.i18n.getMessage('contentMessagesProEnableResponseTimes'), 'p'));
         }
 
         // Server IP
@@ -456,8 +392,6 @@ function getPanel(headers, requestId, options, hasCloseButton = false) {
             ipLine.classList.add('key');
             ipLine.appendChild(document.createTextNode(response.ip));
             panel.appendChild(ipLine);
-        } else {
-            panel.appendChild(getPlansTeaser(chrome.i18n.getMessage('contentMessagesProEnableServerIp'), 'p'));
         }
 
         // GET parameters
@@ -583,12 +517,8 @@ function getRequestTypeFiters(options) {
  * @return {Node}
  */
 function getToolbar(options) {
-    if (!isProVersion()) {
-        return getProVersionTeaser(options);
-    }
     let toolBar = document.createElement('div'),
         toolBarContainer = document.createElement('div'),
-        thankYouLink = thankYouTeaser(options),
         filter = document.createElement('div'),
         inlineFilterInput = document.createElement('input'),
         inlineFilterRegexCheck = document.createElement('input'),
@@ -610,7 +540,6 @@ function getToolbar(options) {
     inlineFitlerRegexCheckLabel.for = 'inlineFilterAllowRegex';
     inlineFitlerRegexCheckLabel.classList.add('noSelect');
     filter.appendChild(inlineFitlerRegexCheckLabel);
-    toolBar.appendChild(thankYouLink);
     toolBar.appendChild(filter);
     toolBar.appendChild(getRequestTypeFiters(options));
     toolBarContainer.appendChild(toolBar);
