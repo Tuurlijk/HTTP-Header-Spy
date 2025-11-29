@@ -5,6 +5,9 @@
 
 'use strict';
 
+// Import dependencies for service worker
+importScripts('./Google/buy.js', './library.js');
+
 var activeLicense,
     headerStore = {};
 

@@ -1,30 +1,27 @@
 {
   "name": "__MSG_extensionName__",
   "short_name": "__MSG_extensionNameShort__",
-  "version": "2.0.49",
-  "manifest_version": 2,
-  "minimum_chrome_version": "18",
+  "version": "3.0.0",
+  "manifest_version": 3,
+  "minimum_chrome_version": "88",
   "description": "__MSG_extensionDescription__",
   "author": "Michiel Roos",
   "homepage_url": "http://www.michielroos.com/",
   "default_locale": "en",
   "permissions": [
-    "http://*/*",
-    "https://*/*",
     "tabs",
     "activeTab",
     "storage",
     "webRequest"
   ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
   "background": {
-    "scripts": [
-      "Resources/JavaScript/Google/buy.js",
-      "Resources/JavaScript/library.js",
-      "Resources/JavaScript/background.js"
-    ],
-    "persistent": true
+    "service_worker": "Resources/JavaScript/background.js"
   },
-  "browser_action": {
+  "action": {
     "default_icon": {
       "19": "Resources/Icons/toolbarIcon19.png",
       "38": "Resources/Icons/toolbarIcon38.png"
@@ -47,7 +44,6 @@
     "page": "Resources/HTML/options.html",
     "open_in_tab": false
   },
-  "options_page": "Resources/HTML/options.html",
   "content_scripts": [
     {
       "js": [
@@ -63,7 +59,12 @@
     }
   ],
   "web_accessible_resources": [
-    "Resources/HTML/plans.html",
-    "Resources/HTML/thanks.html"
+    {
+      "resources": [
+        "Resources/HTML/plans.html",
+        "Resources/HTML/thanks.html"
+      ],
+      "matches": ["http://*/*", "https://*/*"]
+    }
   ]
 }
