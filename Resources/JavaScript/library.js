@@ -10,7 +10,7 @@ var isChrome = true,
     containerId = 'httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ',
     options;
 
-if (typeof InstallTrigger !== 'undefined') {
+if (typeof browser !== 'undefined') {
     isChrome = false;
 }
 
