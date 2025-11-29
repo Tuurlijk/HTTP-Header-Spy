@@ -6,6 +6,7 @@
 'use strict';
 
 // Background script loaded
+console.log('HTTP Header Spy background script initialized');
 
 var headerStore = {};
 
