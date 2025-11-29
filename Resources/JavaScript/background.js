@@ -7,6 +7,100 @@
 
 // Background script loaded
 
+// Global variables and functions from library.js
+var isChrome = true,
+    googleAnalyticsId = 'UA-3541346-13',
+    containerId = 'httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ',
+    options;
+
+// Browser detection: Chrome has chrome API as primary, Firefox has browser API as primary
+if (typeof browser === 'undefined' || navigator.userAgent.indexOf('Firefox') === -1) {
+    isChrome = true;
+} else {
+    isChrome = false;
+}
+
+/**
+ * Check if the object is defined
+ * @return {Boolean}
+ */
+function isDefined(object) {
+    return typeof object !== 'undefined';
+}
+
+/**
+ * Check if URL is valid
+ * - is not undefined
+ * - starts with http
+ * - does not contain our google analytics id
+ *
+ * @param {string} url The url to check.
+ * @return {boolean} True or False.
+ */
+var isValidUrl = function (url) {
+    return isDefined(url)
+        && typeof url === 'string'
+        && url.indexOf('http') === 0
+        && url.indexOf(googleAnalyticsId) === -1
+        && url.indexOf('sourceid=chrome-instant') === -1
+        && url.indexOf('async/newtab?async=') === -1
+        && url.indexOf('chrome/newtab?') === -1
+        && url.indexOf('https://ogs.google.com') !== 0;
+};
+
+/**
+ * Get extension options and store them in the options object
+ */
+function restoreOptions() {
+    // Firefox developer edition supports storage, but a config option needs to be enabled
+    if (isChrome && isDefined(chrome.storage.sync)) {
+        chrome.storage.sync.get(null, function (result) {
+            let activeRequestTypes = result.activeRequestTypes ? result.activeRequestTypes : ['main_frame'];
+            options = {
+                location: result.location ? result.location : 'bottomRight',
+                theme: result.theme ? result.theme : 'light',
+                tabRequestLimit: result.tabRequestLimit ? result.tabRequestLimit : 25,
+                timeout: result.timeout ? result.timeout : 3,
+                hidePanelAfterTimeout: isDefined(result.hidePanelAfterTimeout) ? result.hidePanelAfterTimeout : true,
+                renderMode: result.renderMode ? result.renderMode : 'microMode',
+                hiddenRequestHeaders: result.hiddenRequestHeaders ? result.hiddenRequestHeaders.map(item => item.toLowerCase()) : [],
+                hiddenResponseHeaders: result.hiddenResponseHeaders ? result.hiddenResponseHeaders.map(item => item.toLowerCase()) : [],
+                shownResponseHeaders: result.shownResponseHeaders ? result.shownResponseHeaders.map(item => item.toLowerCase()) : ['^server$'],
+                markers: result.markers ? result.markers.map(item => item.toLowerCase()) : [],
+                activeRequestTypes: activeRequestTypes
+            };
+        });
+    } else {
+        let activeRequestTypes = localStorage.activeRequestTypes ? JSON.parse(localStorage.activeRequestTypes) : ['main_frame'];
+        options = {
+            location: localStorage.location ? localStorage.location : 'bottomRight',
+            theme: localStorage.theme ? localStorage.theme : 'light',
+            tabRequestLimit: localStorage.tabRequestLimit ? localStorage.tabRequestLimit : 25,
+            timeout: localStorage.timeout ? localStorage.timeout : 3,
+            hidePanelAfterTimeout: isDefined(localStorage.hidePanelAfterTimeout) ? localStorage.hidePanelAfterTimeout : true,
+            renderMode: localStorage.renderMode ? localStorage.renderMode : 'microMode',
+            hiddenRequestHeaders: isDefined(localStorage.hiddenRequestHeaders) ? JSON.parse(localStorage.hiddenRequestHeaders).map(item => item.toLowerCase()) : [],
+            hiddenResponseHeaders: isDefined(localStorage.hiddenResponseHeaders) ? JSON.parse(localStorage.hiddenResponseHeaders).map(item => item.toLowerCase()) : [],
+            shownResponseHeaders: isDefined(localStorage.shownResponseHeaders) ? JSON.parse(localStorage.shownResponseHeaders).map(item => item.toLowerCase()) : ['^Server$'],
+            markers: isDefined(localStorage.markers) ? JSON.parse(localStorage.markers).map(item => item.toLowerCase()) : [],
+            activeRequestTypes: activeRequestTypes
+        };
+    }
+}
+
+/**
+ * Store request type selection
+ */
+function storeActiveRequestTypes(types) {
+    if (isChrome && isDefined(chrome.storage.sync)) {
+        let option = {};
+        option['activeRequestTypes'] = types ? types : [];
+        chrome.storage.sync.set(option);
+    } else {
+        localStorage['activeRequestTypes'] = JSON.stringify(types ? types : []);
+    }
+}
+
 var headerStore = {};
 
 /**

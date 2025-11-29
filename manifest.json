@@ -20,11 +20,7 @@
     "https://*/*"
   ],
   "background": {
-    "scripts": [
-      "Resources/JavaScript/library.js",
-      "Resources/JavaScript/background.js"
-    ],
-    "persistent": true
+    "service_worker": "Resources/JavaScript/background.js"
   },
   "action": {
     "default_icon": {
