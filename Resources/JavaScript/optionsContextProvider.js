@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof chrome === 'object') {
         document.querySelector('body').className = 'chromeOptionBody';
     }
-    if (typeof browser !== 'undefined') {
+    if (typeof browser !== 'undefined' && navigator.userAgent.indexOf('Firefox') !== -1) {
         document.querySelector('body').className = 'firefoxOptionBody';
     }
 });

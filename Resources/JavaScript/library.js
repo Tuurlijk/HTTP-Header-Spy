@@ -10,7 +10,10 @@ var isChrome = true,
     containerId = 'httpSpyContainer_sq27T8VFex4CtQ623afyMoiYA89kG6UZ',
     options;
 
-if (typeof browser !== 'undefined') {
+// Browser detection: Chrome has chrome API as primary, Firefox has browser API as primary
+if (typeof browser === 'undefined' || navigator.userAgent.indexOf('Firefox') === -1) {
+    isChrome = true;
+} else {
     isChrome = false;
 }
 
