@@ -5,8 +5,7 @@
 
 'use strict';
 
-// Import dependencies for service worker
-importScripts('./library.js');
+// Background script loaded
 
 var headerStore = {};
 
