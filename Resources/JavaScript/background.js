@@ -5,11 +5,8 @@
 
 'use strict';
 
-// Service worker loaded
-console.log('HTTP Header Spy service worker initialized');
-
-// Import library functions
-importScripts('./Resources/JavaScript/library.js');
+// Background script loaded
+console.log('HTTP Header Spy background script initialized');
 
 var headerStore = {};
 
@@ -494,16 +491,4 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
     }
 });
 
-// Service worker event listeners
-chrome.runtime.onStartup.addListener(() => {
-    console.log('Service worker started');
-    restoreOptions();
-});
-
-chrome.runtime.onInstalled.addListener(() => {
-    console.log('Service worker installed');
-    restoreOptions();
-});
-
-// Initialize immediately
 restoreOptions();
