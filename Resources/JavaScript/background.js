@@ -9,7 +9,7 @@
 console.log('HTTP Header Spy service worker initialized');
 
 // Import library functions
-importScripts('Resources/JavaScript/library.js');
+importScripts('./Resources/JavaScript/library.js');
 
 var headerStore = {};
 
