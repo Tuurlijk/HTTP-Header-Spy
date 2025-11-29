@@ -38,16 +38,19 @@ function injectStyleSheetsIntoContent(tab) {
         {msg: 'isStyleSheetInjected'},
         function(response) {
             if (isDefined(response) && !response.isStyleSheetInjected) {
-                chrome.tabs.insertCSS(tab.id, {
-                    file: '/Resources/CSS/content.css'
+                chrome.scripting.insertCSS({
+                    target: { tabId: tab.id },
+                    files: ['/Resources/CSS/content.css']
                 });
                 if (options.theme === 'light') {
-                    chrome.tabs.insertCSS(tab.id, {
-                        file: '/Resources/CSS/contentLight.css'
+                    chrome.scripting.insertCSS({
+                        target: { tabId: tab.id },
+                        files: ['/Resources/CSS/contentLight.css']
                     });
                 } else {
-                    chrome.tabs.insertCSS(tab.id, {
-                        file: '/Resources/CSS/contentDark.css'
+                    chrome.scripting.insertCSS({
+                        target: { tabId: tab.id },
+                        files: ['/Resources/CSS/contentDark.css']
                     });
                 }
                 chrome.tabs.sendMessage(
