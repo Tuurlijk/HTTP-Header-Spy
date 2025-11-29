@@ -22,8 +22,7 @@
     "scripts": [
       "Resources/JavaScript/library.js",
       "Resources/JavaScript/background.js"
-    ],
-    "persistent": true
+    ]
   },
   "action": {
     "default_icon": {
