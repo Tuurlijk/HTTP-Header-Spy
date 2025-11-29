@@ -212,7 +212,6 @@ chrome.webRequest.onBeforeRedirect.addListener(
  */
 chrome.webRequest.onCompleted.addListener(
     function(info) {
-        console.log('webRequest onCompleted for', info.url);
         if (!isRequestLoggable(info)) {
             return;
         }
@@ -366,15 +365,12 @@ chrome.webRequest.onSendHeaders.addListener(
  * @param {string} message
  */
 function sendHeadersToContent(tabId, url, headers, message) {
-    console.log('sendHeadersToContent called for tab', tabId, 'url', url, 'message', message);
-    console.log('isValidUrl:', isValidUrl(url), 'isTabContentReady:', isTabContentReady(tabId));
     if (!isValidUrl(url) || !isTabContentReady(tabId)) {
         return;
     }
     if (parseInt(tabId, 10) <= 0 || options.renderMode === 'none') {
         return;
     }
-    console.log('Sending message to content script');
     chrome.tabs.sendMessage(tabId, {
         msg: message,
         headers: headers,
