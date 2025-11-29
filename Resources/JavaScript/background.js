@@ -371,13 +371,13 @@ function sendHeadersToContent(tabId, url, headers, message) {
     if (!isValidUrl(url) || !isTabContentReady(tabId)) {
         return;
     }
-    if (parseInt(tabId, 10) <= 0 || options.renderMode === 'none') {
+    if (parseInt(tabId, 10) <= 0 || (options && options.renderMode === 'none')) {
         return;
     }
     chrome.tabs.sendMessage(tabId, {
         msg: message,
         headers: headers,
-        options: options
+        options: options || {}
     });
 }
 
