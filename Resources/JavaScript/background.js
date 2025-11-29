@@ -222,7 +222,9 @@ chrome.webRequest.onBeforeRedirect.addListener(
  */
 chrome.webRequest.onCompleted.addListener(
     function(info) {
+        console.log('WebRequest onCompleted fired for:', info.url);
         if (!isRequestLoggable(info)) {
+            console.log('Request not loggable, skipping');
             return;
         }
         let requestId = String(info.requestId),
@@ -381,6 +383,7 @@ function sendHeadersToContent(tabId, url, headers, message) {
     if (parseInt(tabId, 10) <= 0 || (options && options.renderMode === 'none')) {
         return;
     }
+    console.log('Background sending message to content script:', message, 'for tab', tabId);
     chrome.tabs.sendMessage(tabId, {
         msg: message,
         headers: headers,
