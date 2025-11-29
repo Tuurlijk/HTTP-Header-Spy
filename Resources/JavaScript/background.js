@@ -1,7 +1,7 @@
 /*jshint bitwise:true, curly:true, eqeqeq:true, forin:true, globalstrict: true,
  latedef:true, noarg:true, noempty:true, nonew:true, undef:true, maxlen:256,
  strict:true, trailing:true, boss:true, browser:true, devel:true, jquery:true */
-/*global chrome, options, isChrome, document, isValidUrl, localStorage, tabId, changeInfo, tab, openTab */
+/*global chrome, options, isChrome, isValidUrl, tabId, changeInfo, tab, openTab */
 
 'use strict';
 
@@ -60,53 +60,32 @@ var isValidUrl = function (url) {
  * Get extension options and store them in the options object
  */
 function restoreOptions() {
-    // Firefox developer edition supports storage, but a config option needs to be enabled
-    if (isChrome && isDefined(chrome.storage.sync)) {
-        chrome.storage.sync.get(null, function (result) {
-            let activeRequestTypes = result.activeRequestTypes ? result.activeRequestTypes : ['main_frame'];
-            options = {
-                location: result.location ? result.location : 'bottomRight',
-                theme: result.theme ? result.theme : 'light',
-                tabRequestLimit: result.tabRequestLimit ? result.tabRequestLimit : 25,
-                timeout: result.timeout ? result.timeout : 3,
-                hidePanelAfterTimeout: isDefined(result.hidePanelAfterTimeout) ? result.hidePanelAfterTimeout : true,
-                renderMode: result.renderMode ? result.renderMode : 'microMode',
-                hiddenRequestHeaders: result.hiddenRequestHeaders ? result.hiddenRequestHeaders.map(item => item.toLowerCase()) : [],
-                hiddenResponseHeaders: result.hiddenResponseHeaders ? result.hiddenResponseHeaders.map(item => item.toLowerCase()) : [],
-                shownResponseHeaders: result.shownResponseHeaders ? result.shownResponseHeaders.map(item => item.toLowerCase()) : ['^server$'],
-                markers: result.markers ? result.markers.map(item => item.toLowerCase()) : [],
-                activeRequestTypes: activeRequestTypes
-            };
-        });
-    } else {
-        let activeRequestTypes = localStorage.activeRequestTypes ? JSON.parse(localStorage.activeRequestTypes) : ['main_frame'];
+    // Service workers use chrome.storage (localStorage not available)
+    chrome.storage.sync.get(null, function (result) {
+        let activeRequestTypes = result.activeRequestTypes ? result.activeRequestTypes : ['main_frame'];
         options = {
-            location: localStorage.location ? localStorage.location : 'bottomRight',
-            theme: localStorage.theme ? localStorage.theme : 'light',
-            tabRequestLimit: localStorage.tabRequestLimit ? localStorage.tabRequestLimit : 25,
-            timeout: localStorage.timeout ? localStorage.timeout : 3,
-            hidePanelAfterTimeout: isDefined(localStorage.hidePanelAfterTimeout) ? localStorage.hidePanelAfterTimeout : true,
-            renderMode: localStorage.renderMode ? localStorage.renderMode : 'microMode',
-            hiddenRequestHeaders: isDefined(localStorage.hiddenRequestHeaders) ? JSON.parse(localStorage.hiddenRequestHeaders).map(item => item.toLowerCase()) : [],
-            hiddenResponseHeaders: isDefined(localStorage.hiddenResponseHeaders) ? JSON.parse(localStorage.hiddenResponseHeaders).map(item => item.toLowerCase()) : [],
-            shownResponseHeaders: isDefined(localStorage.shownResponseHeaders) ? JSON.parse(localStorage.shownResponseHeaders).map(item => item.toLowerCase()) : ['^Server$'],
-            markers: isDefined(localStorage.markers) ? JSON.parse(localStorage.markers).map(item => item.toLowerCase()) : [],
+            location: result.location ? result.location : 'bottomRight',
+            theme: result.theme ? result.theme : 'light',
+            tabRequestLimit: result.tabRequestLimit ? result.tabRequestLimit : 25,
+            timeout: result.timeout ? result.timeout : 3,
+            hidePanelAfterTimeout: isDefined(result.hidePanelAfterTimeout) ? result.hidePanelAfterTimeout : true,
+            renderMode: result.renderMode ? result.renderMode : 'microMode',
+            hiddenRequestHeaders: result.hiddenRequestHeaders ? result.hiddenRequestHeaders.map(item => item.toLowerCase()) : [],
+            hiddenResponseHeaders: result.hiddenResponseHeaders ? result.hiddenResponseHeaders.map(item => item.toLowerCase()) : [],
+            shownResponseHeaders: result.shownResponseHeaders ? result.shownResponseHeaders.map(item => item.toLowerCase()) : ['^server$'],
+            markers: result.markers ? result.markers.map(item => item.toLowerCase()) : [],
             activeRequestTypes: activeRequestTypes
         };
-    }
+    });
 }
 
 /**
  * Store request type selection
  */
 function storeActiveRequestTypes(types) {
-    if (isChrome && isDefined(chrome.storage.sync)) {
-        let option = {};
-        option['activeRequestTypes'] = types ? types : [];
-        chrome.storage.sync.set(option);
-    } else {
-        localStorage['activeRequestTypes'] = JSON.stringify(types ? types : []);
-    }
+    let option = {};
+    option['activeRequestTypes'] = types ? types : [];
+    chrome.storage.sync.set(option);
 }
 
 var headerStore = {};
@@ -221,7 +200,7 @@ function isRequestLoggable(info) {
  * Prune store
  */
 function pruneHeaderStore(tabId) {
-    let tabRequestLimit = localStorage.tabRequestLimit ? localStorage.tabRequestLimit : 25,
+    let tabRequestLimit = (options && options.tabRequestLimit) ? options.tabRequestLimit : 25,
         requestIds = Object.keys(headerStore[tabId]);
     if (requestIds.length > tabRequestLimit) {
         delete headerStore[tabId][requestIds.splice(1, 1)];
@@ -436,7 +415,7 @@ chrome.webRequest.onSendHeaders.addListener(
         }
         let requestId = String(info.requestId),
             tabId = String(info.tabId),
-            urlParser = document.createElement('a'),
+            urlParser = new URL(info.url),
             requestIndex;
         // Maybe the request was already removed from the queue
         if (!isDefined(headerStore[tabId]) || !isDefined(headerStore[tabId][requestId])) {
@@ -445,7 +424,6 @@ chrome.webRequest.onSendHeaders.addListener(
         requestIndex = headerStore[tabId][requestId].request.requestIndex;
 
         // Get parameters
-        urlParser.href = info.url;
         if (urlParser.search.length) {
             let get = new URLSearchParams(urlParser.search),
                 parameters = [];
