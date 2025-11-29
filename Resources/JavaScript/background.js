@@ -37,30 +37,37 @@ function injectStyleSheetsIntoContent(tab) {
         tab.id,
         {msg: 'isStyleSheetInjected'},
         function(response) {
-            if (isDefined(response) && !response.isStyleSheetInjected) {
+            // Inject CSS if content script doesn't respond or says styles aren't injected
+            if (!isDefined(response) || !response.isStyleSheetInjected) {
                 chrome.scripting.insertCSS({
                     target: { tabId: tab.id },
                     files: ['/Resources/CSS/content.css']
+                }).catch(function(error) {
+                    console.log('CSS injection failed:', error);
                 });
-                if (options.theme === 'light') {
+                if (options && options.theme === 'light') {
                     chrome.scripting.insertCSS({
                         target: { tabId: tab.id },
                         files: ['/Resources/CSS/contentLight.css']
+                    }).catch(function(error) {
+                        console.log('Light theme CSS injection failed:', error);
                     });
                 } else {
                     chrome.scripting.insertCSS({
                         target: { tabId: tab.id },
                         files: ['/Resources/CSS/contentDark.css']
+                    }).catch(function(error) {
+                        console.log('Dark theme CSS injection failed:', error);
                     });
                 }
                 chrome.tabs.sendMessage(
                     tab.id,
                     {msg: 'styleSheetIsInjected'}
                 );
-                // Mark content as ready to receive headers
-                if (isDefined(headerStore[String(tab.id)])) {
-                    delete headerStore[String(tab.id)].isContentReady;
-                }
+            }
+            // Mark content as ready to receive headers
+            if (isDefined(headerStore[String(tab.id)])) {
+                delete headerStore[String(tab.id)].isContentReady;
             }
         }
     );
